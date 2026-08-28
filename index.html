@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livhuwani's Comeback HQ • Matric May/June 2027</title>
+<link rel="manifest" id="manifestLink">
+<meta name="theme-color" content="#1e3a5f">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--pri:#1e3a5f;--pri-l:#2d5a8e;--acc:#0f766e;--acc-l:#14b8a6;--bg:#f1f5f9;--card:#fff;--ink:#0f172a;--mut:#64748b;--bdr:#e2e8f0;--ok:#16a34a;--warn:#d97706;--err:#dc2626;--slate:#94a3b8}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:.93rem;margin:0}
+h1,h2,h3,h4,h5,h6,.fw-p{font-family:'Poppins',sans-serif}
+.card{border:0;border-radius:.9rem;box-shadow:0 2px 12px rgba(15,23,42,.06);background:var(--card)}
+.card:hover{box-shadow:0 4px 20px rgba(15,23,42,.1);transition:.25s}
+.hero{background:linear-gradient(135deg,#1e3a5f 0%,#0f766e 60%,#065f46 100%);border-radius:1.2rem;color:#fff;padding:1.5rem}
+.count-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:.7rem;min-width:64px;padding:.4rem .3rem;text-align:center}
+.count-box b{font-size:1.4rem;font-family:'Poppins';display:block}
+.count-box small{font-size:.7rem;opacity:.8}
+.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:2rem;padding:.25rem .75rem;font-size:.78rem;display:inline-flex;align-items:center;gap:.3rem}
+.streak-badge{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border-radius:2rem;padding:.35rem 1rem;font-weight:700;font-family:'Poppins';font-size:.95rem;display:inline-flex;align-items:center;gap:.4rem;box-shadow:0 2px 10px rgba(245,158,11,.4)}
+.cq-nav{background:#fff;border-radius:.9rem;box-shadow:0 2px 12px rgba(15,23,42,.06);padding:.35rem;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:.2rem}
+.cq-nav .nav-link{color:var(--mut);border-radius:.6rem;white-space:nowrap;font-weight:600;font-size:.78rem;padding:.45rem .7rem;transition:.2s}
+.cq-nav .nav-link.active{background:var(--pri);color:#fff}
+.cq-nav .nav-link:not(.active):hover{background:var(--bg);color:var(--pri)}
+.subj-dot{width:.7rem;height:.7rem;border-radius:50%;display:inline-block;flex-shrink:0}
+.ring circle{fill:none;stroke-width:3.2}.ring .bgc{stroke:#e2e8f0}.ring .fgc{stroke:var(--acc);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray .6s}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-dow{font-size:.68rem;font-weight:700;color:var(--mut);text-align:center;padding:.2rem 0}
+.cal-day{border-radius:.5rem;min-height:52px;padding:.2rem .3rem;font-size:.72rem;position:relative;cursor:pointer;border:1px solid transparent;transition:.15s}
+.cal-day:hover{border-color:var(--acc)}
+.cal-day .mdot{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--err)}
+.cal-today{outline:2.5px solid var(--acc);outline-offset:-2px}
+.cal-empty{min-height:52px}
+.legend-dot{width:.75rem;height:.75rem;border-radius:.25rem;display:inline-block}
+.btn-subj{border-radius:2rem;font-size:.78rem;padding:.3rem .75rem}
+.timer-disp{font-family:'Poppins';font-size:2.4rem;font-weight:800;letter-spacing:2px}
+.stat-card{text-align:center;padding:1rem .5rem}.stat-card .stat-num{font-size:1.5rem;font-weight:800;font-family:'Poppins'}.stat-card .stat-lbl{font-size:.72rem;color:var(--mut);margin-top:.2rem}
+.schedule-item{border-left:4px solid var(--bdr);padding:.5rem .75rem;margin-bottom:.5rem;border-radius:0 .5rem .5rem 0;background:var(--bg)}
+.schedule-item.active-sched{border-left-color:var(--acc);background:#f0fdfa}
+.schedule-item.done-sched{border-left-color:var(--ok);background:#f0fdf4;opacity:.7}
+.table-report th{background:var(--pri);color:#fff;font-size:.8rem;font-weight:600}
+.table-report td{font-size:.82rem;vertical-align:middle}
+#lockedScreen,#authScreen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1e3a5f,#0f766e)}
+#lockedScreen .lock-card,#authScreen .lock-card{background:#fff;border-radius:1.2rem;padding:2.5rem;text-align:center;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.start-btn{background:linear-gradient(135deg,var(--acc),var(--pri));color:#fff;border:none;border-radius:2rem;padding:1rem 2.5rem;font-size:1.15rem;font-weight:700;font-family:'Poppins';cursor:pointer;transition:.3s;box-shadow:0 4px 20px rgba(15,118,110,.4)}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(15,118,110,.5)}
+.google-btn{background:#fff;color:#333;border:1px solid #ddd;border-radius:2rem;padding:.7rem 2rem;font-size:1rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;transition:.2s}
+.google-btn:hover{background:#f8f9fa;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+#mentorOverlay{position:fixed;inset:0;z-index:9998;background:rgba(15,23,42,.92);color:#fff;overflow-y:auto;display:none;padding:1.5rem}
+.mentor-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:.9rem;padding:1.2rem}
+.toast-container{position:fixed;top:1rem;right:1rem;z-index:10000}
+.attend-pulse{animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.progress-thin{height:6px;border-radius:3px}.progress-thin .progress-bar{border-radius:3px}
+@media(max-width:768px){.hero{padding:1rem}.count-box{min-width:52px}.count-box b{font-size:1.1rem}.streak-badge{font-size:.82rem}.cq-nav .nav-link{font-size:.7rem;padding:.35rem .5rem}}
+@media print{.no-print{display:none!important}}
+.fade-in{animation:fadeIn .4s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- ============ AUTH SCREEN ============ -->
+<div id="authScreen">
+  <div class="lock-card fade-in">
+    <div style="font-size:3rem;margin-bottom:.5rem">🎓</div>
+    <h3 class="fw-p mb-1">Comeback HQ</h3>
+    <p class="text-muted small mb-3">Sign in to access your study portal</p>
+    <button class="google-btn" id="googleLoginBtn" onclick="signInWithGoogle()">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Sign in with Google
+    </button>
+    <p class="text-muted mt-3" style="font-size:.7rem">Or <a href="#" onclick="useLocalMode();return false" class="text-decoration-none">use offline mode</a> (data stays on this device only)</p>
+  </div>
+</div>
+
+<!-- ============ LOCKED SCREEN ============ -->
+<div id="lockedScreen" style="display:none">
+  <div class="lock-card fade-in">
+    <div class="streak-badge mb-3" id="lockStreak"><i class="bi bi-fire"></i> <span id="lockStreakNum">0</span> Day Streak</div>
+    <div style="font-size:2.5rem;margin-bottom:.5rem">📚</div>
+    <h3 class="fw-p mb-1">Good evening, Livhuwani</h3>
+    <p class="text-muted small mb-1" id="lockDate"></p>
+    <p class="small mb-3" id="lockPreview" style="color:var(--mut)"></p>
+    <button class="start-btn" onclick="startMyDay()"><i class="bi bi-play-circle me-2"></i>Start My Day</button>
+    <p class="text-muted mt-3" style="font-size:.68rem">Click to unlock your tasks, timer & calendar</p>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<main class="container-xxl py-3" id="mainApp" style="display:none">
+
+<!-- HERO -->
+<section class="hero mb-3">
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
+    <div>
+      <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+        <p class="mb-0 small" style="opacity:.7"><i class="bi bi-mortarboard-fill me-1"></i>NSC May/June 2027</p>
+        <div class="streak-badge" id="heroStreak"><i class="bi bi-fire"></i> <span id="heroStreakNum">0</span> Day Streak</div>
+      </div>
+      <h1 class="fw-p mb-1" style="font-size:1.6rem">Livhuwani's Comeback HQ</h1>
+      <div class="d-flex flex-wrap gap-2">
+        <span class="chip"><i class="bi bi-calendar-event"></i>Day <b id="dayNum">–</b>/262</span>
+        <span class="chip"><i class="bi bi-flag"></i><span id="heroPhase">–</span></span>
+        <span class="chip"><i class="bi bi-hash"></i>Week <span id="heroWeek">–</span></span>
+      </div>
+    </div>
+    <div class="text-center">
+      <p class="small mb-1" style="opacity:.6">EXAM COUNTDOWN</p>
+      <div class="d-flex gap-1">
+        <div class="count-box"><b id="cdD">–</b><small>days</small></div>
+        <div class="count-box"><b id="cdH">–</b><small>hrs</small></div>
+        <div class="count-box"><b id="cdM">–</b><small>min</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTABILITY STRIP -->
+<div class="row g-2 mb-3 no-print">
+  <div class="col-6 col-md-3"><div class="card stat-card"><div class="stat-num" style="color:var(--acc)" id="accLogin">–</div><div class="stat-lbl">Last Login</div></div></div>
+  <div class="col-6 col-md-3"><div class="card stat-card"><div class="stat-num" style="color:var(--ok)" id="accTasks">0</div><div class="stat-lbl">Tasks Done Today</div></div></div>
+  <div class="col-6 col-md-3"><div class="card stat-card"><div class="stat-num" style="color:var(--pri)" id="accHours">0h</div><div class="stat-lbl">Hours This Week</div></div></div>
+  <div class="col-6 col-md-3"><div class="card stat-card"><div class="stat-num" style="color:var(--err)" id="accBehind">0h</div><div class="stat-lbl">Behind By</div></div></div>
+</div>
+
+<!-- TABS -->
+<ul class="nav nav-pills cq-nav mb-3 no-print" role="tablist">
+  <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-dash"><i class="bi bi-speedometer2 me-1"></i>Dashboard</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-day"><i class="bi bi-sun me-1"></i>My Day</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-subj"><i class="bi bi-book me-1"></i>Subjects</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-assess"><i class="bi bi-clipboard-data me-1"></i>Assessments</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-prog"><i class="bi bi-graph-up me-1"></i>Progress</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-cal"><i class="bi bi-calendar3 me-1"></i>Calendar</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-ready"><i class="bi bi-bullseye me-1"></i>Readiness</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-plan"><i class="bi bi-map me-1"></i>Plan</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-admin"><i class="bi bi-gear me-1"></i>Admin</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-fuel"><i class="bi bi-fire me-1"></i>Fuel</button></li>
+</ul>
+
+<div class="tab-content">
+
+<!-- ===== DASHBOARD ===== -->
+<div class="tab-pane fade show active" id="tab-dash" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-4">
+      <div class="card p-3 h-100">
+        <h6 class="fw-p mb-2"><i class="bi bi-bullseye me-1" style="color:var(--err)"></i>Today's Focus</h6>
+        <p class="fw-bold mb-1" id="focusTitle">–</p>
+        <div id="focusBody" class="small text-muted"></div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-3 h-100">
+        <h6 class="fw-p mb-2"><i class="bi bi-signpost-split me-1" style="color:var(--pri)"></i>Current Phase</h6>
+        <p class="fw-bold mb-1" id="phaseName">–</p>
+        <p class="small text-muted mb-2" id="phaseRange"></p>
+        <div class="progress progress-thin mb-2"><div class="progress-bar" id="phaseBar" style="width:0%"></div></div>
+        <p class="small text-muted mb-0" id="phaseFocus"></p>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-3 h-100 text-center">
+        <h6 class="fw-p text-muted small mb-2">SYLLABUS COVERAGE</h6>
+        <svg class="ring mx-auto" width="110" height="110" viewBox="0 0 36 36"><circle class="bgc" cx="18" cy="18" r="15.9"></circle><circle class="fgc" id="ringCov" cx="18" cy="18" r="15.9"></circle><text x="18" y="20.5" text-anchor="middle" font-size="7" font-weight="700" fill="var(--ink)" id="covPct">0%</text></svg>
+        <p class="small text-muted mt-1 mb-0">Tick topics in <b>Subjects</b></p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-3"><h6 class="fw-p mb-2"><i class="bi bi-pie-chart me-1" style="color:var(--acc)"></i>Weekly Hours (target: 25h)</h6><div style="height:200px"><canvas id="chartDough"></canvas></div></div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-3"><h6 class="fw-p mb-2"><i class="bi bi-bar-chart me-1" style="color:var(--pri)"></i>Subject Mark Tracker</h6><div style="height:200px"><canvas id="chartMarks"></canvas></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MY DAY ===== -->
+<div class="tab-pane fade" id="tab-day" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-clock me-1" style="color:var(--acc)"></i>Daily Attendance</h6>
+        <div id="attendStatus" class="text-center py-2">
+          <p class="small text-muted mb-2">Check in when you start studying</p>
+          <button class="btn btn-lg w-100 mb-2" style="background:var(--acc);color:#fff;border-radius:1rem" id="btnCheckIn" onclick="checkIn()"><i class="bi bi-box-arrow-in-right me-1"></i>Check In</button>
+          <button class="btn btn-outline-secondary w-100" style="border-radius:1rem;display:none" id="btnCheckOut" onclick="checkOut()"><i class="bi bi-box-arrow-right me-1"></i>Check Out</button>
+        </div>
+        <div id="attendInfo" style="display:none">
+          <div class="d-flex justify-content-between small mb-1"><span>Check-in</span><b id="attInTime">–</b></div>
+          <div class="d-flex justify-content-between small mb-1"><span>Check-out</span><b id="attOutTime">–</b></div>
+          <div class="d-flex justify-content-between small"><span>Hours studied</span><b id="attHours">–</b></div>
+        </div>
+      </div>
+      <div class="card p-3 mt-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-stopwatch me-1" style="color:var(--warn)"></i>Pomodoro Timer</h6>
+        <div class="text-center">
+          <div class="timer-disp" id="tDisp">25:00</div>
+          <div class="d-flex justify-content-center gap-1 mb-2">
+            <button class="btn btn-sm btn-outline-secondary btn-subj" onclick="setT(25)">25m</button>
+            <button class="btn btn-sm btn-outline-secondary btn-subj" onclick="setT(50)">50m</button>
+            <button class="btn btn-sm btn-outline-secondary btn-subj" onclick="setT(110)">2h</button>
+          </div>
+          <div class="d-flex justify-content-center gap-2">
+            <button class="btn btn-sm text-white" style="background:var(--ok);border-radius:2rem" id="tStart" onclick="toggleTimer()"><i class="bi bi-play-fill"></i> Start</button>
+            <button class="btn btn-sm btn-outline-secondary" style="border-radius:2rem" onclick="resetTimer()"><i class="bi bi-arrow-counterclockwise"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h6 class="fw-p mb-0"><i class="bi bi-list-check me-1" style="color:var(--pri)"></i>Today's Study Schedule</h6>
+          <span class="small text-muted" id="schedDate"></span>
+        </div>
+        <div id="dailySchedule"></div>
+      </div>
+      <div class="card p-3 mt-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-journal-text me-1" style="color:var(--warn)"></i>Quick Notes</h6>
+        <textarea class="form-control form-control-sm" rows="3" id="dailyNotes" placeholder="What did you struggle with? What clicked?" oninput="saveDailyNote()"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUBJECTS ===== -->
+<div class="tab-pane fade" id="tab-subj" role="tabpanel">
+  <p class="small text-muted mb-3">Tick a topic when you've <b>studied it AND done past questions</b>.</p>
+  <div class="row g-3" id="topicCards"></div>
+</div>
+
+<!-- ===== ASSESSMENTS ===== -->
+<div class="tab-pane fade" id="tab-assess" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-8">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-clipboard-data me-1" style="color:var(--pri)"></i>Assessment Schedule</h6>
+        <div class="d-flex gap-2 mb-2 flex-wrap">
+          <button class="btn btn-sm btn-outline-secondary btn-subj assess-filter active" data-f="all" onclick="filterAssess('all',this)">All</button>
+          <button class="btn btn-sm btn-outline-secondary btn-subj assess-filter" data-f="pending" onclick="filterAssess('pending',this)">Pending</button>
+          <button class="btn btn-sm btn-outline-secondary btn-subj assess-filter" data-f="ready" onclick="filterAssess('ready',this)">Ready</button>
+          <button class="btn btn-sm btn-outline-secondary btn-subj assess-filter" data-f="written" onclick="filterAssess('written',this)">Written</button>
+          <button class="btn btn-sm btn-outline-secondary btn-subj assess-filter" data-f="short" onclick="filterAssess('short',this)">Short</button>
+          <button class="btn btn-sm btn-outline-secondary btn-subj assess-filter" data-f="major" onclick="filterAssess('major',this)">Major</button>
+        </div>
+        <div class="table-responsive"><table class="table table-sm table-hover align-middle" style="font-size:.8rem">
+          <thead><tr><th>Subject</th><th>Type</th><th>Title</th><th>Chapters Covered</th><th>Expected</th><th>Status</th><th>Mark</th><th></th></tr></thead>
+          <tbody id="assessBody"></tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-trophy me-1" style="color:var(--warn)"></i>Progress Report</h6>
+        <div class="table-responsive"><table class="table table-sm table-report mb-0">
+          <thead><tr><th>Subject</th><th>Average</th><th>Target</th><th>Status</th></tr></thead>
+          <tbody id="reportBody"></tbody>
+        </table></div>
+      </div>
+      <div class="card p-3 mt-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-bar-chart-line me-1" style="color:var(--acc)"></i>Mark Trend</h6>
+        <div style="height:180px"><canvas id="chartTrend"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROGRESS ===== -->
+<div class="tab-pane fade" id="tab-prog" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-5">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-journal-plus me-1" style="color:var(--ok)"></i>Log Study Session</h6>
+        <div class="d-flex flex-wrap gap-2 mb-3" id="logBtns"></div>
+        <h6 class="small text-muted mb-1">THIS WEEK</h6>
+        <div class="progress progress-thin mb-1"><div class="progress-bar" id="weekBar" style="background:var(--ok);width:0%"></div></div>
+        <p class="small mb-3"><span id="weekTxt">0h / 25h</span></p>
+        <div id="hoursWrap"></div>
+      </div>
+      <div class="card p-3 mt-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-clock-history me-1" style="color:var(--pri)"></i>Hours Over Time</h6>
+        <div style="height:160px"><canvas id="chartHours"></canvas></div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="card p-3 h-100">
+        <h6 class="fw-p mb-2"><i class="bi bi-journal-check me-1" style="color:var(--pri)"></i>Session Journal</h6>
+        <div style="max-height:500px;overflow-y:auto"><ul class="list-group list-group-flush small" id="sessList"></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CALENDAR ===== -->
+<div class="tab-pane fade" id="tab-cal" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-8">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2 no-print">
+          <button class="btn btn-sm btn-outline-secondary" onclick="calNav(-1)"><i class="bi bi-chevron-left"></i></button>
+          <h6 class="fw-p mb-0" id="calTitle">–</h6>
+          <div><button class="btn btn-sm btn-outline-secondary me-1" onclick="calToday()">Today</button><button class="btn btn-sm btn-outline-secondary" onclick="calNav(1)"><i class="bi bi-chevron-right"></i></button></div>
+        </div>
+        <div class="cal-grid" id="calDow"></div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="d-flex flex-wrap gap-3 small mt-2" id="calLegend"></div>
+      </div>
+    </div>
+    <div class="col-lg-4"><div class="card p-3 h-100"><h6 class="fw-p mb-2"><i class="bi bi-info-circle me-1" style="color:var(--pri)"></i>Selected Day</h6><div id="dayInfo" class="small">Tap any day...</div></div></div>
+  </div>
+</div>
+
+<!-- ===== READINESS & RECOVERY ===== -->
+<div class="tab-pane fade" id="tab-ready" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <div class="card p-3">
+        <h6 class="fw-p mb-3"><i class="bi bi-bullseye me-1" style="color:var(--err)"></i>Exam Readiness Predictor</h6>
+        <div class="row g-2 mb-3">
+          <div class="col-4 text-center"><div class="stat-num" style="color:var(--acc)" id="rdTopics">0%</div><div class="stat-lbl">Topics Done</div></div>
+          <div class="col-4 text-center"><div class="stat-num" style="color:var(--pri)" id="rdHours">0h</div><div class="stat-lbl">Study Hours</div></div>
+          <div class="col-4 text-center"><div class="stat-num" style="color:var(--warn)" id="rdAssess">0</div><div class="stat-lbl">Assessments</div></div>
+        </div>
+        <div class="text-center mb-3">
+          <div style="position:relative;width:140px;height:140px;margin:0 auto">
+            <svg width="140" height="140" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#e2e8f0" stroke-width="3"></circle><circle id="rdRing" cx="18" cy="18" r="15.9" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-dasharray="0 100" style="transition:.6s"></circle><text x="18" y="18" text-anchor="middle" font-size="5" fill="var(--mut)" dy="-2">READINESS</text><text x="18" y="23" text-anchor="middle" font-size="8" font-weight="800" fill="var(--ink)" id="rdPct">0%</text></svg>
+          </div>
+        </div>
+        <div id="rdDetails" class="small"></div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-arrow-counterclockwise me-1" style="color:var(--warn)"></i>Recovery Planner</h6>
+        <div id="recoveryContent"></div>
+      </div>
+      <div class="card p-3 mt-3">
+        <h6 class="fw-p mb-2"><i class="bi bi-radar me-1" style="color:var(--pri)"></i>Readiness by Subject</h6>
+        <div style="height:200px"><canvas id="chartRadar"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STUDY PLAN ===== -->
+<div class="tab-pane fade" id="tab-plan" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2">The 3-Phase Road</h6>
+        <div class="table-responsive"><table class="table table-sm small align-middle"><thead><tr><th>Phase</th><th>Dates</th><th>Wks</th><th>Hrs</th><th>Exit Standard</th></tr></thead><tbody>
+          <tr><td><span class="legend-dot me-1" style="background:var(--pri)"></span>1. Build & Cover</td><td>19 Aug – 18 Dec '26</td><td>17</td><td>425</td><td>Syllabus covered, mini-tests ±45%</td></tr>
+          <tr><td><span class="legend-dot me-1" style="background:var(--slate)"></span>Rest & Review</td><td>19 Dec – 3 Jan</td><td>2</td><td>light</td><td>Recharged, flashcards warm</td></tr>
+          <tr><td><span class="legend-dot me-1" style="background:var(--acc)"></span>2. Consolidate</td><td>4 Jan – 26 Mar '27</td><td>12</td><td>300</td><td>Past questions, mocks ≥50%</td></tr>
+          <tr><td><span class="legend-dot me-1" style="background:var(--warn)"></span>3. Exam Mode</td><td>27 Mar – 7 May '27</td><td>6</td><td>150</td><td>Full timed papers 60–70%</td></tr>
+          <tr><td><span class="legend-dot me-1" style="background:var(--err)"></span>EXAMS</td><td>±11 May – late Jun</td><td>–</td><td>–</td><td>One paper at a time</td></tr>
+        </tbody></table></div>
+      </div>
+      <div class="card p-3 mt-3"><h6 class="fw-p mb-2">Mark Trajectory</h6><div style="height:200px"><canvas id="chartLine"></canvas></div></div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-3">
+        <h6 class="fw-p mb-2">Weekly Rhythm (Week A / B)</h6>
+        <div class="table-responsive"><table class="table table-sm small align-middle text-center"><thead><tr><th>Day</th><th>Week A</th><th>Week B</th></tr></thead><tbody>
+          <tr><td>Mon–Fri</td><td><b style="color:var(--pri-l)">Maths</b> + <b style="color:var(--acc-l)">IT</b></td><td><b style="color:var(--warn)">Acc</b> + <b style="color:#be185d">Econ</b></td></tr>
+          <tr><td>Sat 09–14</td><td><b style="color:var(--warn)">Acc</b> + <b style="color:#be185d">Econ</b></td><td><b style="color:var(--pri-l)">Maths</b> + <b style="color:var(--acc-l)">IT</b></td></tr>
+          <tr class="table-secondary"><td>Sun</td><td colspan="2">Full rest</td></tr>
+        </tbody></table></div>
+        <p class="small text-muted mb-0">Every subject gets 6h/week (±210h each by May).</p>
+      </div>
+      <div class="card p-3 mt-3">
+        <h6 class="fw-p mb-2">2-Hour Block Anatomy</h6>
+        <div class="progress mb-2" style="height:24px;border-radius:.5rem;overflow:hidden">
+          <div class="progress-bar" style="width:17%;background:var(--slate);font-size:.65rem;line-height:24px">20' recap</div>
+          <div class="progress-bar" style="width:41%;background:var(--pri);font-size:.65rem;line-height:24px">50' learn</div>
+          <div class="progress-bar" style="width:33%;background:var(--acc);font-size:.65rem;line-height:24px">40' do</div>
+          <div class="progress-bar" style="width:9%;background:var(--warn);font-size:.6rem;line-height:24px">10'</div>
+        </div>
+        <p class="small text-muted mb-0">10' = mark with memo, log mistake in Error Log.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN ===== -->
+<div class="tab-pane fade" id="tab-admin" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <div class="card p-3"><h6 class="fw-p mb-2">Critical Dates</h6>
+        <ul class="list-group list-group-flush small">
+          <li class="list-group-item px-0"><b>19 Aug 2026</b> – Programme starts</li>
+          <li class="list-group-item px-0"><b>1 Oct 2026 – 5 Feb 2027</b> – Register for May/June SC exams</li>
+          <li class="list-group-item px-0"><b>18 Dec 2026</b> – Phase 1 complete</li>
+          <li class="list-group-item px-0"><b>26 Mar 2027</b> – Phase 2 complete</li>
+          <li class="list-group-item px-0"><b>±11 May 2027</b> – Exams begin</li>
+          <li class="list-group-item px-0"><b>±Jul 2027</b> – Results</li>
+          <li class="list-group-item px-0"><b>Aug–Oct 2027</b> – Apply UNISA BSc Computing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-3"><h6 class="fw-p mb-2">Admin Checklist</h6><div id="adminList"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FUEL ===== -->
+<div class="tab-pane fade" id="tab-fuel" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <div class="card p-3"><h6 class="fw-p mb-2">Evidence She Can Win</h6>
+        <ul class="small mb-0">
+          <li class="mb-1">LO 78% (Level 6) and Tshivenda 69% in 2019 – the ability was always there.</li>
+          <li class="mb-1">The four rewrites are <b>practice subjects</b> – they respond to repetition.</li>
+          <li class="mb-1">±875 planned hours > a full school year of guided time.</li>
+          <li>Age 26 = discipline, purpose, a reason to finish. That's a superpower.</li>
+        </ul>
+        <blockquote class="small mt-3 mb-0" style="border-left:4px solid var(--warn);background:#fffbeb;padding:.7rem 1rem;border-radius:.5rem">"She is not repeating matric. She is <b>finishing it – on purpose, with a plan.</b>"</blockquote>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-3"><h6 class="fw-p mb-2">Habits of the Next 9 Months</h6>
+        <ul class="small mb-0">
+          <li class="mb-1">Phone in another room during blocks.</li>
+          <li class="mb-1">Error Log: every wrong answer fixed = a mark banked.</li>
+          <li class="mb-1">Never miss two days in a row (bad-day rule).</li>
+          <li class="mb-1">Sleep 7–8h – memory is built at night.</li>
+          <li class="mb-1">Tell your study partner every Friday what got done.</li>
+          <li class="mb-1">Reward each phase completed.</li>
+          <li>Visualise the UNISA graduation gown.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /tab-content -->
+<footer class="text-center small text-muted py-3 no-print">Built with care for Livhuwani • <span id="footerMode">Local</span> mode • <a href="#" onclick="signOut();return false" class="text-decoration-none">Sign out</a></footer>
+</main>
+
+<!-- MARK ENTRY MODAL -->
+<div class="modal fade" id="markModal" tabindex="-1"><div class="modal-dialog modal-sm"><div class="modal-content">
+  <div class="modal-header py-2"><h6 class="modal-title fw-p small">Enter Mark</h6><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body"><p class="small mb-2" id="markModalTitle"></p><div class="input-group input-group-sm"><input type="number" class="form-control" id="markInput" min="0" max="100" placeholder="0-100"><span class="input-group-text">/ 100</span></div></div>
+  <div class="modal-footer py-2"><button class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-sm text-white" style="background:var(--ok);border-radius:2rem" onclick="saveMark()">Save Mark</button></div>
+</div></div></div>
+
+<!-- MENTOR OVERLAY -->
+<div id="mentorOverlay">
+  <div class="container-xxl py-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div><h4 class="fw-p mb-0">Mentor Dashboard</h4><p class="small" style="opacity:.7">Livhuwani's live data</p></div>
+      <button class="btn btn-sm btn-outline-light" style="border-radius:2rem" onclick="toggleMentor()"><i class="bi bi-x-lg me-1"></i>Close</button>
+    </div>
+    <div class="row g-3" id="mentorContent"></div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastBox"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ============================================================
+   CONFIGURATION — Replace these with your Supabase details
+   ============================================================ */
+const SB_URL = 'YOUR_SUPABASE_URL';
+const SB_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const USE_SB = SB_URL !== 'YOUR_SUPABASE_URL';
+let sb = null;
+if (USE_SB) { try { sb = supabase.createClient(SB_URL, SB_KEY); } catch(e) { console.warn('Supabase init failed', e); } }
+
+/* ============================================================
+   HELPERS & CONSTANTS
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const DAY = 86400000;
+const iso = dt => dt.toISOString().slice(0, 10);
+const ds = s => new Date(s + 'T00:00:00');
+const today0 = ds(iso(new Date()));
+const START = ds('2026-08-19'), EXAM = new Date('2027-05-11T09:00:00');
+const A_MON = ds('2026-08-24'), LAUNCH_MON = ds('2026-08-17');
+
+const SUBJ = {
+  Mathematics: { c: '#4f46e5', cL: '#818cf8', i: 'bi-calculator', t: 60 },
+  Accounting: { c: '#d97706', cL: '#fbbf24', i: 'bi-journal-check', t: 55 },
+  Economics: { c: '#be185d', cL: '#f472b6', i: 'bi-graph-up-arrow', t: 55 },
+  IT: { c: '#0f766e', cL: '#2dd4bf', i: 'bi-code-slash', t: 70 }
+};
+
+const TOPICS = {
+  Mathematics: ['Gr10-11 foundations (algebra, exponents, equations, graphs)','Sequences & series','Functions & graphs','Finance, growth & decay','Algebra & inequalities','Differential calculus','Probability','Trigonometry','Analytical geometry','Statistics & regression','Euclidean geometry & mensuration'],
+  Accounting: ['Foundations: CRJ/CPJ, ledgers, trial balance','Partnerships','Non-profit organisations','Companies: financial statements','Share capital, dividends & debentures','Manufacturing accounts','Budgets & cash budgets','Reconciliations & stock valuations','Fixed assets & depreciation','Analysis, interpretation & GAAP'],
+  Economics: ['Micro basics: demand, supply, elasticity','Market structures','Production & costs','Market failure & role of the state','Circular flow & business cycles','Fiscal & monetary policy','Public sector & public finance','Foreign exchange & balance of payments','Growth & development','Contemporary issues & trade'],
+  IT: ['Python basics (syntax, variables, I/O)','Control structures & loops','Functions & modules','OOP in Python','Data structures, files & exceptions','Databases & SQL','Networks & internet technologies','E-communications & cybersecurity','Systems technologies & data processing','Social, ethical & environmental issues']
+};
+
+/* Topic week durations (how many weeks each topic takes) */
+const TOPIC_WEEKS = {
+  Mathematics: [2,1,1,1,1,2,1,1,1,1,2],
+  Accounting: [2,1,1,1,1,1,1,1,1,1],
+  Economics: [1,1,1,1,1,1,1,1,1,1],
+  IT: [2,1,1,2,1,1,1,1,1,1]
+};
+
+const PHASES = [
+  { n:'Phase 1 – Build & Cover', s:'2026-08-19', e:'2026-12-18', c:'#1e3a5f', bg:'#eef2ff', f:'Cover full syllabus once. First 4 weeks = Gr10-11 foundations for Maths & Accounting.' },
+  { n:'Rest & Light Review', s:'2026-12-19', e:'2027-01-03', c:'#94a3b8', bg:'#f1f5f9', f:'Flashcards & error-log reading only. Rest is part of the plan.' },
+  { n:'Phase 2 – Consolidate', s:'2027-01-04', e:'2027-03-26', c:'#0f766e', bg:'#e8faf3', f:'Topic past-questions. Monthly mocks >=50%.' },
+  { n:'Phase 3 – Exam Mode', s:'2027-03-27', e:'2027-05-07', c:'#d97706', bg:'#fffbeb', f:'Full timed past papers. Targets 60-70%.' },
+  { n:'EXAMS', s:'2027-05-11', e:'2027-06-25', c:'#dc2626', bg:'#fef2f2', f:'One paper at a time. Trust the 875 hours.' }
+];
+
+const MILESTONES = {
+  '2026-08-19':'Programme starts','2026-10-01':'Exam registration OPENS','2026-12-18':'Phase 1 complete',
+  '2027-01-04':'Phase 2 begins','2027-02-05':'Exam registration CLOSES','2027-03-26':'Phase 2 complete',
+  '2027-05-07':'Ready day','2027-05-11':'First exam'
+};
+
+const ADMIN_ITEMS = ['Gather PDFs, past papers & Error Log book','Set up study desk + phone rules','Register for May/June 2027 SC exams (1 Oct - 5 Feb)','Confirm 2019 NSC credit combination','Confirm IT practical/PAT rule for part-time candidates','Write Dec diagnostic mocks','Write March full mocks','After results: apply for combined certificate','Apply to UNISA (Aug-Oct 2027)'];
+
+const PAIR = {
+  A: { 1:['Mathematics','IT'], 2:['Accounting','Economics'], 3:['Mathematics','IT'], 4:['Accounting','Economics'], 5:['Mathematics','IT'], 6:['Accounting','Economics'] },
+  B: { 1:['Accounting','Economics'], 2:['Mathematics','IT'], 3:['Accounting','Economics'], 4:['Mathematics','IT'], 5:['Accounting','Economics'], 6:['Mathematics','IT'] }
+};
+
+/* ============================================================
+   LOCAL STORAGE FALLBACK
+   ============================================================ */
+const LS = {
+  get(k, def) { try { return JSON.parse(localStorage.getItem('hq_' + k)) ?? def; } catch { return def; } },
+  set(k, v) { try { localStorage.setItem('hq_' + k, JSON.stringify(v)); } catch {} }
+};
+
+/* ============================================================
+   UNIFIED DATA LAYER (Supabase or localStorage)
+   ============================================================ */
+let userId = null;
+let currentAssessFilter = 'all';
+let currentMarkAssessId = null;
+
+const DB = {
+  async init() {
+    if (USE_SB && sb) {
+      const { data: { session } } = await sb.auth.getSession();
+      if (session) {
+        userId = session.user.id;
+        // Ensure profile exists
+        const { data: prof } = await sb.from('profiles').select('*').eq('id', userId).single();
+        if (!prof) await sb.from('profiles').insert({ id: userId, display_name: session.user.user_metadata?.full_name || 'Learner', role: 'learner' });
+      }
+    }
+    if (!userId) userId = LS.get('local_uid', 'local_user_' + Date.now());
+    LS.set('local_uid', userId);
+  },
+
+  // Generic get all matching rows
+  async getAll(table, query = {}) {
+    if (USE_SB && sb && userId) {
+      let q = sb.from(table).select('*').eq('user_id', userId);
+      Object.entries(query).forEach(([k, v]) => { q = q.eq(k, v); });
+      const { data } = await q;
+      return data || [];
+    }
+    return LS.get(table, []);
+  },
+
+  // Insert or update
+  async upsert(table, record, matchKeys = []) {
+    if (USE_SB && sb && userId) {
+      record.user_id = userId;
+      // Check if exists
+      let q = sb.from(table).select('id');
+      matchKeys.forEach(k => { q = q.eq(k, record[k]); });
+      q = q.eq('user_id', userId);
+      const { data: existing } = await q;
+      if (existing && existing.length > 0) {
+        const { data } = await sb.from(table).update(record).eq('id', existing[0].id).select();
+        return data?.[0];
+      } else {
+        const { data } = await sb.from(table).insert(record).select();
+        return data?.[0];
+      }
+    }
+    // Local fallback
+    let arr = LS.get(table, []);
+    const idx = arr.findIndex(r => matchKeys.every(k => r[k] === record[k]));
+    if (idx >= 0) { arr[idx] = { ...arr[idx], ...record }; } else { arr.push({ ...record, id: Date.now() }); }
+    LS.set(table, arr);
+    return record;
+  },
+
+  async insert(table, record) {
+    if (USE_SB && sb && userId) {
+      record.user_id = userId;
+      const { data } = await sb.from(table).insert(record).select();
+      return data?.[0];
+    }
+    let arr = LS.get(table, []);
+    record.id = Date.now();
+    arr.push(record);
+    LS.set(table, arr);
+    return record;
+  },
+
+  async update(table, id, updates) {
+    if (USE_SB && sb && userId) {
+      const { data } = await sb.from(table).update(updates).eq('id', id).select();
+      return data?.[0];
+    }
+    let arr = LS.get(table, []);
+    const idx = arr.findIndex(r => r.id === id);
+    if (idx >= 0) { arr[idx] = { ...arr[idx], ...updates }; LS.set(table, arr); }
+    return updates;
+  },
+
+  // Server-side timestamp insert for attendance
+  async checkIn() {
+    if (USE_SB && sb && userId) {
+      // Use RPC with server timestamp to prevent cheating
+      const { data, error } = await sb.rpc('check_in', { p_user_id: userId });
+      if (error) {
+        // Fallback: insert with client time (less secure)
+        return await this.upsert('attendance', { date: iso(today0), check_in: new Date().toISOString(), check_out: null, hours: 0 }, ['date']);
+      }
+      return data;
+    }
+    return await this.upsert('attendance', { date: iso(today0), check_in: new Date().toISOString(), check_out: null, hours: 0 }, ['date']);
+  },
+
+  async checkOut() {
+    if (USE_SB && sb && userId) {
+      const { data, error } = await sb.rpc('check_out', { p_user_id: userId });
+      if (error) {
+        const rows = await this.getAll('attendance', { date: iso(today0) });
+        if (rows.length > 0) {
+          const out = new Date().toISOString();
+          const h = Math.max(0, (new Date(out) - new Date(rows[0].check_in)) / 3600000);
+          return await this.update('attendance', rows[0].id, { check_out: out, hours: Math.round(h * 100) / 100 });
+        }
+      }
+      return data;
+    }
+    const rows = await this.getAll('attendance', { date: iso(today0) });
+    if (rows.length > 0) {
+      const out = new Date().toISOString();
+      const h = Math.max(0, (new Date(out) - new Date(rows[0].check_in)) / 3600000);
+      return await this.update('attendance', rows[0].id, { check_out: out, hours: Math.round(h * 100) / 100 });
+    }
+  }
+};
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+async function signInWithGoogle() {
+  if (!USE_SB || !sb) { showToast('Supabase not configured. Use offline mode.', 'warn'); return; }
+  const { error } = await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
+  if (error) showToast('Login failed: ' + error.message, 'err');
+}
+
+async function useLocalMode() {
+  userId = LS.get('local_uid', 'local_user_' + Date.now());
+  LS.set('local_uid', userId);
+  $('#authScreen').style.display = 'none';
+  showLockedScreen();
+}
+
+async function signOut() {
+  if (USE_SB && sb) await sb.auth.signOut();
+  userId = null;
+  $('#authScreen').style.display = 'flex';
+  $('#mainApp').style.display = 'none';
+  $('#lockedScreen').style.display = 'none';
+  if (mentorOpen) toggleMentor();
+}
+
+/* ============================================================
+   STREAK MANAGEMENT
+   ============================================================ */
+async function loadStreak() {
+  let streak = LS.get('streak', { count: 0, lastDate: null, missedYesterday: false });
+  if (USE_SB && sb && userId) {
+    const { data } = await sb.from('streaks').select('*').eq('user_id', userId).single();
+    if (data) streak = { count: data.current_streak, lastDate: data.last_activity_date, missedYesterday: data.missed_yesterday };
+  }
+  return streak;
+}
+
+async function updateStreak() {
+  let streak = await loadStreak();
+  const today = iso(today0);
+  const yesterday = iso(new Date(today0.getTime() - DAY));
+
+  if (streak.lastDate === today) return streak; // Already updated today
+
+  if (streak.lastDate === yesterday) {
+    streak.count++;
+    streak.missedYesterday = false;
+  } else if (streak.lastDate === iso(new Date(today0.getTime() - 2 * DAY))) {
+    // Missed yesterday (bad-day rule: don't break yet)
+    streak.missedYesterday = true;
+    streak.count++;
+  } else if (streak.lastDate && streak.lastDate !== today) {
+    // Missed 2+ days — break streak
+    if (streak.missedYesterday) {
+      streak.count = 0;
+      streak.missedYesterday = false;
+    } else if (streak.lastDate !== yesterday) {
+      streak.count = 1;
+      streak.missedYesterday = false;
+    }
+  } else {
+    streak.count = 1;
+  }
+
+  streak.lastDate = today;
+  LS.set('streak', streak);
+
+  if (USE_SB && sb && userId) {
+    await sb.from('streaks').upsert({ user_id: userId, current_streak: streak.count, last_activity_date: today, missed_yesterday: streak.missedYesterday }, { onConflict: 'user_id' });
+  }
+  return streak;
+}
+
+async function recordActivity() {
+  const streak = await updateStreak();
+  renderStreak(streak);
+  LS.set('last_login', new Date().toISOString());
+}
+
+function renderStreak(streak) {
+  if (!streak) return;
+  const n = streak.count || 0;
+  $('#lockStreakNum').textContent = n;
+  $('#heroStreakNum').textContent = n;
+  if (n >= 7) { $('#heroStreak').style.background = 'linear-gradient(135deg,#f59e0b,#dc2626)'; }
+  else if (n >= 3) { $('#heroStreak').style.background = 'linear-gradient(135deg,#f59e0b,#f97316)'; }
+  else { $('#heroStreak').style.background = 'linear-gradient(135deg,#d97706,#f59e0b)'; }
+}
+
+/* ============================================================
+   LOCKED SCREEN & START MY DAY
+   ============================================================ */
+function showLockedScreen() {
+  const streak = LS.get('streak', { count: 0, lastDate: null, missedYesterday: false });
+  renderStreak(streak);
+
+  const opts = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+  $('#lockDate').textContent = today0.toLocaleDateString('en-ZA', opts);
+
+  const wd = today0.getDay();
+  const wt = weekType(today0);
+  if (wd === 0) { $('#lockPreview').textContent = 'Sunday = REST day. Enjoy it!'; }
+  else if (wt === 'pre') { $('#lockPreview').textContent = 'Launch week: set up your desk and materials.'; }
+  else {
+    const pair = (PAIR[wt] || PAIR.A)[wd] || ['Review', 'Error Log'];
+    $('#lockPreview').textContent = `Tonight: ${pair[0]} + ${pair[1]} (18:00-22:30)`;
+  }
+
+  $('#lockedScreen').style.display = 'flex';
+  $('#mainApp').style.display = 'none';
+}
+
+async function startMyDay() {
+  await recordActivity();
+  $('#lockedScreen').style.display = 'none';
+  $('#mainApp').style.display = 'block';
+  $('#mainApp').classList.add('fade-in');
+  await loadAllData();
+  renderAll();
+  requestNotificationPermission();
+}
+
+/* ============================================================
+   ATTENDANCE
+   ============================================================ */
+async function loadAttendance() {
+  const rows = await DB.getAll('attendance', { date: iso(today0) });
+  return rows.length > 0 ? rows[0] : null;
+}
+
+async function renderAttendance() {
+  const att = await loadAttendance();
+  if (att && att.check_in && !att.check_out) {
+    // Currently checked in
+    $('#btnCheckIn').style.display = 'none';
+    $('#btnCheckOut').style.display = 'block';
+    $('#btnCheckOut').classList.add('attend-pulse');
+    $('#attendInfo').style.display = 'block';
+    $('#attInTime').textContent = formatTime(new Date(att.check_in));
+    $('#attOutTime').textContent = 'In progress...';
+    $('#attHours').textContent = calcLiveHours(att.check_in);
+    // Update live
+    clearInterval(window._attInterval);
+    window._attInterval = setInterval(() => {
+      if (att.check_in) $('#attHours').textContent = calcLiveHours(att.check_in);
+    }, 30000);
+  } else if (att && att.check_in && att.check_out) {
+    // Already checked out today
+    $('#btnCheckIn').style.display = 'none';
+    $('#btnCheckOut').style.display = 'none';
+    $('#attendInfo').style.display = 'block';
+    $('#attInTime').textContent = formatTime(new Date(att.check_in));
+    $('#attOutTime').textContent = formatTime(new Date(att.check_out));
+    $('#attHours').textContent = (att.hours || 0).toFixed(2) + 'h';
+  } else {
+    // Not checked in
+    $('#btnCheckIn').style.display = 'block';
+    $('#btnCheckOut').style.display = 'none';
+    $('#attendInfo').style.display = 'none';
+  }
+}
+
+async function checkIn() {
+  await DB.checkIn();
+  await recordActivity();
+  renderAttendance();
+  showToast('Checked in! Your study session has started.', 'ok');
+}
+
+async function checkOut() {
+  await DB.checkOut();
+  await recordActivity();
+  renderAttendance();
+  showToast('Checked out. Great session!', 'ok');
+}
+
+function formatTime(d) { return d.toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' }); }
+function calcLiveHours(isoStr) {
+  const diff = (new Date() - new Date(isoStr)) / 3600000;
+  return Math.max(0, diff).toFixed(2) + 'h';
+}
+
+/* ============================================================
+   DAILY SCHEDULE GENERATOR
+   ============================================================ */
+function weekType(now) {
+  if (now < START) return 'pre';
+  const mon = mondayOf(now);
+  if (mon < A_MON) return 'launch';
+  return Math.round((mon - A_MON) / (7 * DAY)) % 2 === 0 ? 'A' : 'B';
+}
+
+function mondayOf(dt) {
+  const x = new Date(dt); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); x.setHours(0, 0, 0, 0); return x;
+}
+
+function phaseOf(dt) {
+  return PHASES.find(p => dt >= ds(p.s) && dt <= ds(p.e)) || null;
+}
+
+function getNextTopic(subject) {
+  const done = LS.get('topics', {});
+  const topics = TOPICS[subject];
+  for (let i = 0; i < topics.length; i++) {
+    if (!done[subject + '|' + i]) return { index: i, name: topics[i] };
+  }
+  return { index: topics.length - 1, name: topics[topics.length - 1] + ' (review)' };
+}
+
+function generateDailySchedule() {
+  const wd = today0.getDay();
+  const wt = weekType(today0);
+  const ph = phaseOf(today0);
+  const tasks = LS.get('today_tasks', {});
+
+  if (wd === 0) {
+    return [{ time: 'All day', subject: 'Rest', section: 'Full rest — brain builds memory today', done: true, icon: 'bi-moon' }];
+  }
+  if (!ph || ph.n === 'EXAMS') {
+    return [{ time: '09:00 - 12:00', subject: 'Exam Prep', section: 'Final review of key topics', done: false, icon: 'bi-pencil' }];
+  }
+  if (ph.n.startsWith('Rest')) {
+    return [
+      { time: '18:00 - 18:45', subject: 'Review', section: 'Flashcards & error log', done: false, icon: 'bi-arrow-repeat' }
+    ];
+  }
+
+  const pair = (PAIR[wt] || PAIR.A)[wd] || ['Review', 'Error Log'];
+  const sched = [];
+
+  if (wd === 6) {
+    // Saturday: 09:00-14:00
+    const t1 = getNextTopic(pair[0]);
+    const t2 = getNextTopic(pair[1]);
+    sched.push(
+      { time: '09:00 - 11:00', subject: pair[0], section: t1.name, done: !!tasks['s0'], icon: SUBJ[pair[0]]?.i || 'bi-book', key: 's0' },
+      { time: '11:00 - 11:30', subject: 'Break', section: 'Stretch, hydrate', done: true, icon: 'bi-cup-hot', key: 'b1' },
+      { time: '11:30 - 13:30', subject: pair[1], section: t2.name, done: !!tasks['s1'], icon: SUBJ[pair[1]]?.i || 'bi-book', key: 's1' },
+      { time: '13:30 - 14:00', subject: 'Weekly Review', section: 'Review this week, plan next week', done: !!tasks['s2'], icon: 'bi-clipboard-check', key: 's2' }
+    );
+  } else {
+    // Weekday: 18:00 - 22:30
+    const t1 = getNextTopic(pair[0]);
+    const t2 = getNextTopic(pair[1]);
+    sched.push(
+      { time: '18:00 - 18:20', subject: pair[0], section: 'Recap previous work', done: !!tasks['s0'], icon: 'bi-arrow-repeat', key: 's0' },
+      { time: '18:20 - 19:10', subject: pair[0], section: 'Learn: ' + t1.name, done: !!tasks['s1'], icon: SUBJ[pair[0]]?.i || 'bi-book', key: 's1' },
+      { time: '19:10 - 19:50', subject: pair[0], section: 'Exercises: ' + t1.name, done: !!tasks['s2'], icon: 'bi-pencil', key: 's2' },
+      { time: '19:50 - 20:00', subject: pair[0], section: 'Mark & log errors', done: !!tasks['s3'], icon: 'bi-check-circle', key: 's3' },
+      { time: '20:00 - 20:30', subject: 'Break', section: 'Rest your eyes, move around', done: true, icon: 'bi-cup-hot', key: 'b1' },
+      { time: '20:30 - 20:50', subject: pair[1], section: 'Recap previous work', done: !!tasks['s4'], icon: 'bi-arrow-repeat', key: 's4' },
+      { time: '20:50 - 21:40', subject: pair[1], section: 'Learn: ' + t2.name, done: !!tasks['s5'], icon: SUBJ[pair[1]]?.i || 'bi-book', key: 's5' },
+      { time: '21:40 - 22:20', subject: pair[1], section: 'Exercises: ' + t2.name, done: !!tasks['s6'], icon: 'bi-pencil', key: 's6' },
+      { time: '22:20 - 22:30', subject: pair[1], section: 'Mark & log errors', done: !!tasks['s7'], icon: 'bi-check-circle', key: 's7' }
+    );
+  }
+
+  // Add assessment reminder if any assessment is due within 2 days
+  const assessList = generateAssessmentSchedule();
+  const dueSoon = assessList.filter(a => a.status === 'ready' || (a.status === 'pending' && Math.abs((ds(a.expectedDate) - today0) / DAY) <= 3));
+  if (dueSoon.length > 0) {
+    sched.push({ time: 'Reminder', subject: 'Assessment Due', section: dueSoon[0].title + ' — expected ' + dueSoon[0].expectedDate, done: false, icon: 'bi-exclamation-triangle', key: 'remind', isAlert: true });
+  }
+
+  return sched;
+}
+
+function renderDailySchedule() {
+  const sched = generateDailySchedule();
+  const opts = { weekday: 'long', day: 'numeric', month: 'long' };
+  $('#schedDate').textContent = today0.toLocaleDateString('en-ZA', opts);
+
+  const tasks = LS.get('today_tasks', {});
+  const todayKey = iso(today0);
+  if (LS.get('tasks_date') !== todayKey) { LS.set('today_tasks', {}); LS.set('tasks_date', todayKey); }
+
+  $('#dailySchedule').innerHTML = sched.map((s, i) => {
+    const doneClass = s.done ? 'done-sched' : (s.isAlert ? '' : 'active-sched');
+    const checkHtml = s.key && !s.done && s.subject !== 'Break' && !s.isAlert
+      ? `<input type="checkbox" class="form-check-input me-2" onchange="toggleTask('${s.key}', this.checked)" style="cursor:pointer">`
+      : (s.done ? '<i class="bi bi-check-circle-fill text-success me-2"></i>' : (s.isAlert ? '<i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>' : ''));
+    const color = SUBJ[s.subject]?.c || 'var(--slate)';
+    return `<div class="schedule-item ${doneClass}" ${s.isAlert ? 'style="border-left-color:var(--warn);background:#fffbeb"' : ''}>
+      <div class="d-flex align-items-start gap-1">
+        ${checkHtml}
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold small" style="color:${color}">${s.subject}</span>
+            <span class="small text-muted">${s.time}</span>
+          </div>
+          <p class="small text-muted mb-0">${s.section}</p>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Update tasks done count
+  const doneCount = Object.values(LS.get('today_tasks', {})).filter(Boolean).length;
+  $('#accTasks').textContent = doneCount;
+}
+
+function toggleTask(key, checked) {
+  const tasks = LS.get('today_tasks', {});
+  tasks[key] = checked;
+  LS.set('today_tasks', tasks);
+  if (checked) recordActivity();
+  renderDailySchedule();
+}
+
+function saveDailyNote() {
+  LS.set('note_' + iso(today0), $('#dailyNotes').value);
+}
+
+/* ============================================================
+   ASSESSMENT SCHEDULE & MARKS
+   ============================================================ */
+function generateAssessmentSchedule() {
+  const stored = LS.get('assessments', null);
+  if (stored) return stored;
+
+  const assessments = [];
+  const startDate = START;
+
+  Object.keys(TOPICS).forEach(subject => {
+    const weeks = TOPIC_WEEKS[subject];
+    let weekOffset = 0;
+
+    TOPICS[subject].forEach((topic, i) => {
+      const topicEndWeek = weekOffset + weeks[i];
+      // Short assessment: 2 days after topic expected completion
+      const shortDate = new Date(startDate.getTime() + topicEndWeek * 7 * DAY + 2 * DAY);
+      if (shortDate <= ds('2027-05-07')) {
+        assessments.push({
+          id: subject + '_s_' + i,
+          subject, type: 'short',
+          title: subject + ': ' + topic,
+          chapters: [topic],
+          expectedDate: iso(shortDate),
+          status: 'pending', mark: null, total: 100
+        });
+      }
+
+      // Major assessment: after every 3 topics or last topic
+      if ((i + 1) % 3 === 0 || i === TOPICS[subject].length - 1) {
+        const startIdx = Math.max(0, i - 2);
+        const majorDate = new Date(startDate.getTime() + topicEndWeek * 7 * DAY + 4 * DAY);
+        if (majorDate <= ds('2027-05-07')) {
+          assessments.push({
+            id: subject + '_m_' + Math.ceil((i + 1) / 3),
+            subject, type: 'major',
+            title: subject + ': Major ' + Math.ceil((i + 1) / 3),
+            chapters: TOPICS[subject].slice(startIdx, i + 1),
+            expectedDate: iso(majorDate),
+            status: 'pending', mark: null, total: 100
+          });
+        }
+      }
+      weekOffset = topicEndWeek;
+    });
+  });
+
+  // Add Phase 2 consolidation assessments
+  ['Mathematics', 'Accounting', 'Economics', 'IT'].forEach(s => {
+    assessments.push({
+      id: s + '_consol', subject: s, type: 'major',
+      title: s + ': Consolidation Test',
+      chapters: ['All topics covered'],
+      expectedDate: '2027-02-15', status: 'pending', mark: null, total: 100
+    });
+    assessments.push({
+      id: s + '_mock', subject: s, type: 'major',
+      title: s + ': Full Mock Exam',
+      chapters: ['Full syllabus'],
+      expectedDate: '2027-04-15', status: 'pending', mark: null, total: 100
+    });
+  });
+
+  LS.set('assessments', assessments);
+  return assessments;
+}
+
+function updateAssessmentStatuses() {
+  const assess = generateAssessmentSchedule();
+  const done = LS.get('topics', {});
+  assess.forEach(a => {
+    if (a.status === 'pending') {
+      // Check if all chapters' topics are done
+      const allDone = a.chapters.every(ch => {
+        const idx = TOPICS[a.subject].indexOf(ch);
+        return idx >= 0 && done[a.subject + '|' + idx];
+      });
+      if (allDone && ds(a.expectedDate) <= today0) a.status = 'ready';
+      else if (allDone) a.status = 'ready';
+    }
+  });
+  LS.set('assessments', assess);
+}
+
+function filterAssess(filter, btn) {
+  currentAssessFilter = filter;
+  $$('.assess-filter').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderAssessments();
+}
+
+function renderAssessments() {
+  const assess = generateAssessmentSchedule();
+  updateAssessmentStatuses();
+  const filtered = currentAssessFilter === 'all' ? assess : assess.filter(a => a.status === currentAssessFilter || a.type === currentAssessFilter);
+
+  $('#assessBody').innerHTML = filtered.map(a => {
+    const sc = SUBJ[a.subject]?.c || 'var(--mut)';
+    const typeBadge = a.type === 'major'
+      ? '<span class="badge" style="background:var(--warn);font-size:.65rem">MAJOR</span>'
+      : '<span class="badge" style="background:var(--slate);font-size:.65rem">SHORT</span>';
+    const statusBadge = a.status === 'written'
+      ? '<span class="badge text-bg-success" style="font-size:.65rem">Written</span>'
+      : a.status === 'ready'
+        ? '<span class="badge text-bg-warning" style="font-size:.65rem">Ready</span>'
+        : '<span class="badge text-bg-secondary" style="font-size:.65rem">Pending</span>';
+    const markHtml = a.mark !== null
+      ? `<b style="color:${a.mark >= 50 ? 'var(--ok)' : 'var(--err)'}">${a.mark}%</b>`
+      : '<span class="text-muted">—</span>';
+    const btnHtml = a.status === 'ready' || a.status === 'pending'
+      ? `<button class="btn btn-sm btn-outline-primary btn-subj" onclick="openMarkModal('${a.id}')"><i class="bi bi-pencil-square"></i></button>`
+      : `<button class="btn btn-sm btn-outline-secondary btn-subj" onclick="openMarkModal('${a.id}')"><i class="bi bi-pencil"></i></button>`;
+    return `<tr>
+      <td><span class="subj-dot me-1" style="background:${sc}"></span>${a.subject}</td>
+      <td>${typeBadge}</td>
+      <td style="max-width:200px">${a.title}</td>
+      <td style="max-width:180px;font-size:.7rem">${a.chapters.join(', ')}</td>
+      <td class="text-nowrap">${a.expectedDate}</td>
+      <td>${statusBadge}</td>
+      <td>${markHtml}</td>
+      <td>${btnHtml}</td>
+    </tr>`;
+  }).join('');
+
+  renderProgressReport();
+}
+
+function openMarkModal(assessId) {
+  currentMarkAssessId = assessId;
+  const assess = generateAssessmentSchedule().find(a => a.id === assessId);
+  if (!assess) return;
+  $('#markModalTitle').textContent = assess.title;
+  $('#markInput').value = assess.mark !== null ? assess.mark : '';
+  new bootstrap.Modal($('#markModal')).show();
+}
+
+async function saveMark() {
+  const mark = parseInt($('#markInput').value);
+  if (isNaN(mark) || mark < 0 || mark > 100) { showToast('Enter a valid mark (0-100)', 'warn'); return; }
+
+  const assess = generateAssessmentSchedule();
+  const idx = assess.findIndex(a => a.id === currentMarkAssessId);
+  if (idx < 0) return;
+
+  assess[idx].mark = mark;
+  assess[idx].status = 'written';
+  LS.set('assessments', assess);
+
+  // Save to DB
+  if (USE_SB && sb && userId) {
+    await DB.upsert('assessments', {
+      assess_id: assess[idx].id, subject: assess[idx].subject, type: assess[idx].type,
+      title: assess[idx].title, expected_date: assess[idx].expectedDate,
+      status: 'written', mark: mark, total: 100
+    }, ['assess_id']);
+  }
+
+  await recordActivity();
+  bootstrap.Modal.getInstance($('#markModal')).hide();
+  renderAssessments();
+  renderMarkChart();
+  renderDashboardMarks();
+  showToast('Mark saved: ' + mark + '%', 'ok');
+}
+
+function renderProgressReport() {
+  const assess = generateAssessmentSchedule();
+  const html = Object.keys(SUBJ).map(s => {
+    const written = assess.filter(a => a.subject === s && a.status === 'written' && a.mark !== null);
+    const avg = written.length > 0 ? Math.round(written.reduce((sum, a) => sum + a.mark, 0) / written.length) : null;
+    const target = SUBJ[s].t;
+    const statusHtml = avg === null
+      ? '<span class="badge text-bg-secondary" style="font-size:.65rem">No marks</span>'
+      : avg >= target
+        ? '<span class="badge text-bg-success" style="font-size:.65rem">On track</span>'
+        : avg >= target - 10
+          ? '<span class="badge text-bg-warning" style="font-size:.65rem">Close</span>'
+          : '<span class="badge text-bg-danger" style="font-size:.65rem">Behind</span>';
+    return `<tr>
+      <td><span class="subj-dot me-1" style="background:${SUBJ[s].c}"></span>${s}</td>
+      <td><b>${avg !== null ? avg + '%' : '—'}</b></td>
+      <td>${target}%</td>
+      <td>${statusHtml}</td>
+    </tr>`;
+  }).join('');
+  $('#reportBody').innerHTML = html;
+}
+
+/* ============================================================
+   TOPICS
+   ============================================================ */
+function buildTopics() {
+  const done = LS.get('topics', {});
+  $('#topicCards').innerHTML = Object.keys(SUBJ).map(s => {
+    const topics = TOPICS[s];
+    const dd = topics.filter((_, i) => done[s + '|' + i]).length;
+    const pct = Math.round(dd / topics.length * 100);
+    return `<div class="col-md-6"><div class="card p-3 h-100" style="border-top:4px solid ${SUBJ[s].c}">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="fw-p mb-0"><i class="bi ${SUBJ[s].i} me-1" style="color:${SUBJ[s].c}"></i>${s}</h6>
+        <span class="badge" style="background:${SUBJ[s].c}" id="pct-${s}">${pct}%</span>
+      </div>
+      <p class="small text-muted mb-2">Target ${SUBJ[s].t}%+ • Papers 1 & 2</p>
+      <div class="mb-2">${topics.map((t, i) => `<div class="form-check" style="font-size:.82rem">
+        <input class="form-check-input" type="checkbox" ${done[s + '|' + i] ? 'checked' : ''} onchange="toggleTopic('${s}',${i},this.checked)">
+        <label class="form-check-label">${t}</label>
+      </div>`).join('')}</div>
+      <div class="progress progress-thin mb-0"><div class="progress-bar" id="bar-${s}" style="background:${SUBJ[s].c};width:${pct}%"></div></div>
+    </div></div>`;
+  }).join('');
+}
+
+async function toggleTopic(subject, index, checked) {
+  const done = LS.get('topics', {});
+  done[subject + '|' + index] = checked;
+  LS.set('topics', done);
+  if (checked) {
+    await recordActivity();
+    await DB.upsert('topic_progress', { subject, topic_index: index, completed: checked, completed_at: new Date().toISOString() }, ['subject', 'topic_index']);
+  }
+  buildTopics();
+  renderCoverage();
+  updateAssessmentStatuses();
+}
+
+function renderCoverage() {
+  const done = LS.get('topics', {});
+  let tot = 0, all = 0;
+  Object.keys(SUBJ).forEach(s => {
+    const n = TOPICS[s].length;
+    const dd = TOPICS[s].filter((_, i) => done[s + '|' + i]).length;
+    tot += dd; all += n;
+    const p = Math.round(dd / n * 100);
+    const bar = $('#bar-' + s);
+    if (bar) { bar.style.width = p + '%'; }
+    const pct = $('#pct-' + s);
+    if (pct) pct.textContent = p + '%';
+  });
+  const cov = Math.round(tot / all * 100);
+  $('#ringCov').style.strokeDasharray = cov + ' 100';
+  $('#covPct').textContent = cov + '%';
+}
+
+/* ============================================================
+   SESSIONS & HOURS
+   ============================================================ */
+async function logSession(subject, hours) {
+  await DB.insert('study_sessions', { date: iso(today0), subject, hours, created_at: new Date().toISOString() });
+  await recordActivity();
+  renderSessions();
+  renderWeeklyHours();
+  renderHoursChart();
+}
+
+function renderLogButtons() {
+  $('#logBtns').innerHTML = Object.keys(SUBJ).map(s =>
+    `<button class="btn btn-sm text-white btn-subj" style="background:${SUBJ[s].c}" onclick="logSession('${s}',2)"><i class="bi bi-plus-lg"></i> ${s} 2h</button>`
+  ).join('') + `<button class="btn btn-sm btn-outline-secondary btn-subj" onclick="logSession('Review',1)"><i class="bi bi-plus-lg"></i> Review 1h</button>`;
+}
+
+async function renderSessions() {
+  const sess = await DB.getAll('study_sessions');
+  const mon = mondayOf(new Date());
+  let wkH = 0;
+  const per = {};
+  sess.forEach(e => {
+    per[e.subject] = (per[e.subject] || 0) + (e.hours || 0);
+    if (ds(e.date) >= mon) wkH += (e.hours || 0);
+  });
+
+  $('#weekBar').style.width = Math.min(100, wkH / 25 * 100) + '%';
+  $('#weekTxt').textContent = wkH.toFixed(1) + 'h / 25h this week';
+  $('#accHours').textContent = wkH.toFixed(1) + 'h';
+
+  // Behind by
+  const weeksSinceStart = Math.max(0, Math.round((mon - LAUNCH_MON) / (7 * DAY)));
+  const expectedHours = Math.min(weeksSinceStart * 25, 875);
+  const totalHours = Object.values(per).reduce((a, b) => a + b, 0);
+  const behind = Math.max(0, expectedHours - totalHours);
+  $('#accBehind').textContent = behind.toFixed(0) + 'h';
+  $('#accBehind').style.color = behind > 20 ? 'var(--err)' : behind > 5 ? 'var(--warn)' : 'var(--ok)';
+
+  // Per-subject hours
+  $('#hoursWrap').innerHTML = Object.keys(SUBJ).map(s => {
+    const h = per[s] || 0;
+    return `<div class="mb-2"><div class="d-flex justify-content-between small"><span><span class="subj-dot me-1" style="background:${SUBJ[s].c}"></span>${s}</span><b>${h.toFixed(1)} / 210h</b></div><div class="progress progress-thin"><div class="progress-bar" style="background:${SUBJ[s].c};width:${Math.min(100, h / 210 * 100)}%"></div></div></div>`;
+  }).join('');
+
+  // Session journal
+  $('#sessList').innerHTML = sess.slice(-15).reverse().map(e =>
+    `<li class="list-group-item px-0 py-1 d-flex justify-content-between"><span>${e.date} — <b>${e.subject}</b></span><span class="text-muted">${e.hours}h</span></li>`
+  ).join('') || '<li class="list-group-item px-0 text-muted">No sessions yet. Start your first block!</li>';
+}
+
+function renderWeeklyHours() { renderSessions(); }
+
+/* ============================================================
+   CALENDAR
+   ============================================================ */
+let calY = today0.getFullYear(), calM = today0.getMonth();
+
+function initCalendar() {
+  $('#calDow').innerHTML = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x => `<div class="cal-dow">${x}</div>`).join('');
+  $('#calLegend').innerHTML = PHASES.map(p => `<span><span class="legend-dot me-1" style="background:${p.c}"></span>${p.n}</span>`).join('') +
+    '<span><span class="legend-dot me-1" style="background:var(--err);border-radius:50%"></span>Milestone</span>';
+  renderCalendar();
+}
+
+function renderCalendar() {
+  $('#calTitle').textContent = new Date(calY, calM, 1).toLocaleDateString('en-ZA', { month: 'long', year: 'numeric' });
+  const first = new Date(calY, calM, 1), off = (first.getDay() + 6) % 7, dim = new Date(calY, calM + 1, 0).getDate();
+  let h = '';
+  for (let i = 0; i < off; i++) h += '<div class="cal-empty"></div>';
+  for (let dd = 1; dd <= dim; dd++) {
+    const dt = new Date(calY, calM, dd), ph = phaseOf(dt), k = iso(dt);
+    h += `<div class="cal-day ${k === iso(today0) ? 'cal-today' : ''}" style="background:${ph ? ph.bg : '#fff'}" onclick="showDay('${k}')"><b>${dd}</b>${MILESTONES[k] ? '<span class="mdot"></span>' : ''}</div>`;
+  }
+  $('#calGrid').innerHTML = h;
+}
+
+function calNav(dir) { calM += dir; if (calM < 0) { calM = 11; calY--; } if (calM > 11) { calM = 0; calY++; } renderCalendar(); }
+function calToday() { calY = today0.getFullYear(); calM = today0.getMonth(); renderCalendar(); }
+
+function showDay(k) {
+  const dt = ds(k), ph = phaseOf(dt), wt = weekType(dt);
+  let info = `<b>${dt.toLocaleDateString('en-ZA', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</b><br>`;
+  info += ph ? `<span class="badge mt-2 mb-2" style="background:${ph.c}">${ph.n}</span><p class="mt-2">${ph.f}</p>` : '<p class="mt-2">Outside programme phases.</p>';
+  if (MILESTONES[k]) info += `<p class="fw-bold mt-2">⭐ ${MILESTONES[k]}</p>`;
+  if (ph && !ph.n.startsWith('EXAMS') && !ph.n.startsWith('Rest') && dt.getDay() !== 0 && wt !== 'pre') {
+    const pair = (PAIR[wt] || PAIR.A)[dt.getDay()];
+    if (pair) info += `<p class="text-muted mt-2">Suggested: ${pair.join(' + ')}</p>`;
+  }
+  // Show assessments due on this day
+  const assess = generateAssessmentSchedule().filter(a => a.expectedDate === k);
+  if (assess.length > 0) {
+    info += '<p class="fw-bold mt-2" style="color:var(--warn)"><i class="bi bi-clipboard-data me-1"></i>Assessments due:</p>';
+    assess.forEach(a => { info += `<p class="small">${a.title} (${a.type})</p>`; });
+  }
+  $('#dayInfo').innerHTML = info;
+}
+
+/* ============================================================
+   EXAM READINESS & RECOVERY
+   ============================================================ */
+function renderReadiness() {
+  const done = LS.get('topics', {});
+  const assess = generateAssessmentSchedule();
+  const sess = LS.get('study_sessions', []);
+
+  // Topics completed
+  let totT = 0, allT = 0;
+  Object.keys(SUBJ).forEach(s => { allT += TOPICS[s].length; totT += TOPICS[s].filter((_, i) => done[s + '|' + i]).length; });
+  const topicPct = Math.round(totT / allT * 100);
+
+  // Total hours
+  const totalH = sess.reduce((s, e) => s + (e.hours || 0), 0);
+
+  // Assessments written
+  const written = assess.filter(a => a.status === 'written');
+  const writtenCount = written.length;
+
+  // Average mark
+  const avgMark = written.length > 0 ? Math.round(written.reduce((s, a) => s + (a.mark || 0), 0) / written.length) : 0;
+
+  // Composite readiness score
+  const topicScore = topicPct * 0.35;
+  const hoursScore = Math.min(100, totalH / 620 * 100) * 0.25;
+  const assessScore = Math.min(100, writtenCount / 20 * 100) * 0.2;
+  const markScore = avgMark * 0.2;
+  const readiness = Math.round(topicScore + hoursScore + assessScore + markScore);
+
+  $('#rdTopics').textContent = topicPct + '%';
+  $('#rdHours').textContent = totalH.toFixed(0) + 'h';
+  $('#rdAssess').textContent = writtenCount;
+  $('#rdPct').textContent = readiness + '%';
+  $('#rdRing').style.strokeDasharray = readiness + ' 100';
+  $('#rdRing').style.stroke = readiness >= 70 ? 'var(--ok)' : readiness >= 40 ? 'var(--warn)' : 'var(--err)';
+
+  // Details
+  $('#rdDetails').innerHTML = `
+    <div class="d-flex justify-content-between small mb-1"><span>Topics covered</span><b>${topicPct}%</b></div>
+    <div class="progress progress-thin mb-2"><div class="progress-bar" style="width:${topicPct}%;background:var(--acc)"></div></div>
+    <div class="d-flex justify-content-between small mb-1"><span>Hours accumulated (target: 620h)</span><b>${totalH.toFixed(0)}h</b></div>
+    <div class="progress progress-thin mb-2"><div class="progress-bar" style="width:${Math.min(100, totalH / 620 * 100)}%;background:var(--pri)"></div></div>
+    <div class="d-flex justify-content-between small mb-1"><span>Assessments written (target: 20+)</span><b>${writtenCount}</b></div>
+    <div class="progress progress-thin mb-2"><div class="progress-bar" style="width:${Math.min(100, writtenCount / 20 * 100)}%;background:var(--warn)"></div></div>
+    <div class="d-flex justify-content-between small"><span>Average mark</span><b>${avgMark > 0 ? avgMark + '%' : '—'}</b></div>
+    ${readiness >= 70 ? '<p class="text-success small mt-2"><i class="bi bi-check-circle me-1"></i>On track for exam readiness</p>' : readiness >= 40 ? '<p class="text-warning small mt-2"><i class="bi bi-exclamation-circle me-1"></i>Keep pushing — you need more coverage</p>' : '<p class="text-danger small mt-2"><i class="bi bi-exclamation-triangle me-1"></i>Significantly behind — activate recovery plan</p>'}
+  `;
+}
+
+function renderRecovery() {
+  const sess = LS.get('study_sessions', []);
+  const mon = mondayOf(new Date());
+  let wkH = 0;
+  sess.forEach(e => { if (ds(e.date) >= mon) wkH += (e.hours || 0); });
+  const missed = Math.max(0, 25 - wkH);
+
+  // Check for existing recovery plan
+  const plans = LS.get('recovery_plans', {});
+  const weekKey = iso(mon);
+  const plan = plans[weekKey];
+
+  let html = `<div class="d-flex align-items-center gap-3 mb-3">
+    <div class="text-center"><div class="stat-num" style="color:${missed > 0 ? 'var(--err)' : 'var(--ok)'}">${missed.toFixed(1)}</div><div class="stat-lbl">Hours Missed This Week</div></div>
+    <div class="flex-grow-1"><p class="small text-muted mb-0">${missed > 0 ? 'You need to recover ' + missed.toFixed(1) + ' hours to stay on track.' : 'You are on track this week!'}</p></div>
+  </div>`;
+
+  if (missed > 0) {
+    const slots = [];
+    const sat = new Date(mon.getTime() + 5 * DAY);
+    const sun = new Date(mon.getTime() + 6 * DAY);
+    // Suggest Saturday and Sunday recovery
+    if (!plan) {
+      let remaining = missed;
+      if (remaining > 0) slots.push({ day: 'Saturday ' + sat.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' }), time: '09:00 - ' + (9 + Math.min(remaining, 5)).toFixed(0) + ':00', hours: Math.min(remaining, 5) });
+      remaining -= 5;
+      if (remaining > 0) slots.push({ day: 'Sunday ' + sun.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' }), time: '09:00 - ' + (9 + Math.min(remaining, 4)).toFixed(0) + ':00', hours: Math.min(remaining, 4) });
+      remaining -= 4;
+      if (remaining > 0) slots.push({ day: 'Next Mon', time: '17:00 - ' + (17 + Math.min(remaining, 2)).toFixed(0) + ':00', hours: Math.min(remaining, 2) });
+    } else {
+      plan.slots.forEach(s => slots.push(s));
+    }
+
+    html += `<h6 class="small fw-bold mb-2">Recovery Plan</h6>`;
+    html += slots.map((s, i) => `<div class="d-flex align-items-center gap-2 mb-2">
+      <input type="checkbox" class="form-check-input" ${plan ? (plan.slots[i]?.done ? 'checked' : '') : ''} onchange="toggleRecoverySlot('${weekKey}',${i},this.checked)">
+      <div class="flex-grow-1"><div class="small fw-bold">${s.day}</div><div class="small text-muted">${s.time} (${s.hours}h)</div></div>
+    </div>`).join('');
+
+    if (!plan) {
+      html += `<button class="btn btn-sm btn-outline-warning btn-subj mt-2" onclick="saveRecoveryPlan('${weekKey}')"><i class="bi bi-save me-1"></i>Commit to This Plan</button>`;
+    }
+  } else {
+    html += '<p class="small text-success"><i class="bi bi-check-circle me-1"></i>No recovery needed this week. Keep it up!</p>';
+  }
+
+  // Past recovery history
+  const pastPlans = Object.entries(plans).filter(([k]) => k !== weekKey).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 3);
+  if (pastPlans.length > 0) {
+    html += '<hr class="my-3"><h6 class="small fw-bold mb-2">Recent Recovery</h6>';
+    pastPlans.forEach(([wk, p]) => {
+      const done = p.slots.filter(s => s.done).length;
+      html += `<p class="small mb-1">Week of ${wk}: ${done}/${p.slots.length} slots recovered</p>`;
+    });
+  }
+
+  $('#recoveryContent').innerHTML = html;
+}
+
+function saveRecoveryPlan(weekKey) {
+  const sess = LS.get('study_sessions', []);
+  const mon = mondayOf(new Date());
+  let wkH = 0;
+  sess.forEach(e => { if (ds(e.date) >= mon) wkH += (e.hours || 0); });
+  const missed = Math.max(0, 25 - wkH);
+
+  const sat = new Date(mon.getTime() + 5 * DAY);
+  const sun = new Date(mon.getTime() + 6 * DAY);
+  const slots = [];
+  let remaining = missed;
+  if (remaining > 0) slots.push({ day: 'Saturday ' + sat.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' }), time: '09:00 - ' + (9 + Math.min(remaining, 5)).toFixed(0) + ':00', hours: Math.min(remaining, 5), done: false });
+  remaining -= 5;
+  if (remaining > 0) slots.push({ day: 'Sunday ' + sun.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' }), time: '09:00 - ' + (9 + Math.min(remaining, 4)).toFixed(0) + ':00', hours: Math.min(remaining, 4), done: false });
+  remaining -= 4;
+  if (remaining > 0) slots.push({ day: 'Next Mon', time: '17:00 - ' + (17 + Math.min(remaining, 2)).toFixed(0) + ':00', hours: Math.min(remaining, 2), done: false });
+
+  const plans = LS.get('recovery_plans', {});
+  plans[weekKey] = { missed, slots };
+  LS.set('recovery_plans', plans);
+  showToast('Recovery plan saved!', 'ok');
+  renderRecovery();
+}
+
+function toggleRecoverySlot(weekKey, slotIdx, checked) {
+  const plans = LS.get('recovery_plans', {});
+  if (plans[weekKey] && plans[weekKey].slots[slotIdx]) {
+    plans[weekKey].slots[slotIdx].done = checked;
+    LS.set('recovery_plans', plans);
+    if (checked) recordActivity();
+  }
+}
+
+/* ============================================================
+   ADMIN CHECKLIST
+   ============================================================ */
+function buildAdmin() {
+  const done = LS.get('admin', {});
+  $('#adminList').innerHTML = ADMIN_ITEMS.map((a, i) =>
+    `<div class="form-check mb-1"><input class="form-check-input" type="checkbox" ${done[i] ? 'checked' : ''} onchange="toggleAdmin(${i},this.checked)"><label class="form-check-label small">${a}</label></div>`
+  ).join('');
+}
+
+function toggleAdmin(i, checked) {
+  const done = LS.get('admin', {});
+  done[i] = checked;
+  LS.set('admin', done);
+}
+
+/* ============================================================
+   COUNTDOWN & HERO
+   ============================================================ */
+function tickCountdown() {
+  const now = new Date();
+  let ms = EXAM - now;
+  if (ms < 0) ms = 0;
+  $('#cdD').textContent = Math.floor(ms / DAY);
+  $('#cdH').textContent = String(Math.floor(ms / 3600000) % 24).padStart(2, '0');
+  $('#cdM').textContent = String(Math.floor(ms / 60000) % 60).padStart(2, '0');
+
+  const now0 = ds(iso(now));
+  $('#dayNum').textContent = Math.max(0, Math.min(262, Math.round((now0 - START) / DAY) + 1));
+  const ph = phaseOf(now0);
+  $('#heroPhase').textContent = ph ? ph.n : (now0 < START ? 'Pre-launch' : 'Complete');
+  const mon = mondayOf(now0);
+  let wk = '–';
+  if (now0 >= START) wk = Math.max(1, Math.round((mon - LAUNCH_MON) / (7 * DAY)) + 1);
+  $('#heroWeek').textContent = wk;
+
+  // Phase progress
+  if (ph) {
+    $('#phaseName').textContent = ph.n;
+    $('#phaseRange').textContent = ph.s + ' → ' + ph.e;
+    const p = Math.max(0, Math.min(100, Math.round((now0 - ds(ph.s)) / (ds(ph.e) - ds(ph.s) + DAY) * 100)));
+    $('#phaseBar').style.width = p + '%';
+    $('#phaseBar').style.background = ph.c;
+    $('#phaseFocus').textContent = ph.f;
+  }
+
+  // Focus
+  const wd = now0.getDay(), wt = weekType(now0);
+  if (ph && ph.n === 'EXAMS') { $('#focusTitle').textContent = 'Exam day'; $('#focusBody').textContent = 'One paper at a time. Read twice, answer what is asked.'; }
+  else if (ph && ph.n.startsWith('Rest')) { $('#focusTitle').textContent = 'Light week'; $('#focusBody').textContent = 'Flashcards & error log only. Rest is part of the plan.'; }
+  else if (wd === 0) { $('#focusTitle').textContent = 'Sunday REST'; $('#focusBody').textContent = 'Full rest. Brain builds memory today.'; }
+  else if (wt === 'pre' || wt === 'launch') { $('#focusTitle').textContent = 'Launch week'; $('#focusBody').textContent = 'Set up desk, print plan, organise materials.'; }
+  else {
+    const pair = (PAIR[wt] || PAIR.A)[wd] || ['Review', 'Error Log'];
+    $('#focusTitle').textContent = pair[0] + ' + ' + pair[1];
+    if (wd === 6) { $('#focusBody').textContent = '09:00–11:00 ' + pair[0] + ' • 11:30–13:30 ' + pair[1] + ' • 13:30–14:00 review'; }
+    else { $('#focusBody').textContent = '18:00–20:00 ' + pair[0] + ' • 20:30–22:30 ' + pair[1]; }
+  }
+}
+
+/* ============================================================
+   CHARTS
+   ============================================================ */
+let chartDough, chartLine, chartMarks, chartTrend, chartHours, chartRadar;
+
+function initCharts() {
+  Chart.defaults.font.family = 'Inter';
+  Chart.defaults.font.size = 11;
+
+  // Weekly hours doughnut
+  chartDough = new Chart($('#chartDough'), {
+    type: 'doughnut',
+    data: { labels: ['Maths', 'IT', 'Accounting', 'Economics', 'Review'], datasets: [{ data: [6, 6, 6, 6, 1], backgroundColor: ['#4f46e5', '#0f766e', '#d97706', '#be185d', '#94a3b8'], borderWidth: 2, borderColor: '#fff' }] },
+    options: { maintainAspectRatio: false, cutout: '65%', plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } } }
+  });
+
+  // Mark trajectory
+  chartLine = new Chart($('#chartLine'), {
+    type: 'line',
+    data: { labels: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'], datasets: [
+      { label: 'Target', data: [40, 43, 45, 48, 50, 55, 60, 68, 70], borderColor: '#1e3a5f', tension: .3, fill: false, pointRadius: 3 },
+      { label: 'Minimum safe', data: [35, 38, 40, 42, 45, 48, 52, 55, 58], borderColor: '#dc2626', borderDash: [5, 4], tension: .3, fill: false, pointRadius: 2 }
+    ] },
+    options: { maintainAspectRatio: false, scales: { y: { min: 0, max: 100 } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } } }
+  });
+
+  // Subject mark tracker (bar)
+  const assess = generateAssessmentSchedule();
+  const markData = Object.keys(SUBJ).map(s => {
+    const w = assess.filter(a => a.subject === s && a.status === 'written' && a.mark !== null);
+    return w.length > 0 ? Math.round(w.reduce((sum, a) => sum + a.mark, 0) / w.length) : 0;
+  });
+  chartMarks = new Chart($('#chartMarks'), {
+    type: 'bar',
+    data: { labels: Object.keys(SUBJ), datasets: [
+      { label: 'Current Avg', data: markData, backgroundColor: Object.keys(SUBJ).map(s => SUBJ[s].c), borderRadius: 6 },
+      { label: 'Target', data: Object.keys(SUBJ).map(s => SUBJ[s].t), backgroundColor: Object.keys(SUBJ).map(() => '#e2e8f0'), borderRadius: 6 }
+    ] },
+    options: { maintainAspectRatio: false, scales: { y: { min: 0, max: 100 } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } } }
+  });
+
+  // Mark trend (line over time)
+  chartTrend = new Chart($('#chartTrend'), {
+    type: 'line',
+    data: { labels: [], datasets: Object.keys(SUBJ).map(s => ({ label: s, data: [], borderColor: SUBJ[s].c, tension: .3, fill: false, pointRadius: 3 })) },
+    options: { maintainAspectRatio: false, scales: { y: { min: 0, max: 100 } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } } } }
+  });
+
+  // Hours over time
+  chartHours = new Chart($('#chartHours'), {
+    type: 'bar',
+    data: { labels: [], datasets: [{ label: 'Hours', data: [], backgroundColor: '#1e3a5f', borderRadius: 4 }] },
+    options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } }
+  });
+
+  // Readiness radar
+  chartRadar = new Chart($('#chartRadar'), {
+    type: 'radar',
+    data: { labels: Object.keys(SUBJ), datasets: [
+      { label: 'Coverage %', data: [0, 0, 0, 0], borderColor: '#0f766e', backgroundColor: 'rgba(15,118,110,0.1)', pointRadius: 4 },
+      { label: 'Avg Mark', data: [0, 0, 0, 0], borderColor: '#d97706', backgroundColor: 'rgba(217,119,6,0.1)', pointRadius: 4 }
+    ] },
+    options: { maintainAspectRatio: false, scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, font: { size: 9 } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } } } }
+  });
+}
+
+function renderMarkChart() {
+  const assess = generateAssessmentSchedule().filter(a => a.status === 'written' && a.mark !== null);
+  // Group by date
+  const byDate = {};
+  assess.forEach(a => {
+    if (!byDate[a.expectedDate]) byDate[a.expectedDate] = {};
+    byDate[a.expectedDate][a.subject] = a.mark;
+  });
+  const dates = Object.keys(byDate).sort();
+  chartTrend.data.labels = dates.map(d => ds(d).toLocaleDateString('en-ZA', { month: 'short', day: 'numeric' }));
+  Object.keys(SUBJ).forEach((s, i) => {
+    chartTrend.data.datasets[i].data = dates.map(d => byDate[d][s] || null);
+  });
+  chartTrend.update();
+}
+
+function renderDashboardMarks() {
+  const assess = generateAssessmentSchedule();
+  const markData = Object.keys(SUBJ).map(s => {
+    const w = assess.filter(a => a.subject === s && a.status === 'written' && a.mark !== null);
+    return w.length > 0 ? Math.round(w.reduce((sum, a) => sum + a.mark, 0) / w.length) : 0;
+  });
+  chartMarks.data.datasets[0].data = markData;
+  chartMarks.update();
+}
+
+function renderHoursChart() {
+  const sess = LS.get('study_sessions', []);
+  // Group by week
+  const byWeek = {};
+  sess.forEach(e => {
+    const mon = iso(mondayOf(ds(e.date)));
+    byWeek[mon] = (byWeek[mon] || 0) + (e.hours || 0);
+  });
+  const weeks = Object.keys(byWeek).sort().slice(-12);
+  chartHours.data.labels = weeks.map(w => ds(w).toLocaleDateString('en-ZA', { month: 'short', day: 'numeric' }));
+  chartHours.data.datasets[0].data = weeks.map(w => byWeek[w]);
+  chartHours.update();
+}
+
+function renderRadar() {
+  const done = LS.get('topics', {});
+  const assess = generateAssessmentSchedule();
+  const covData = Object.keys(SUBJ).map(s => {
+    const dd = TOPICS[s].filter((_, i) => done[s + '|' + i]).length;
+    return Math.round(dd / TOPICS[s].length * 100);
+  });
+  const markData = Object.keys(SUBJ).map(s => {
+    const w = assess.filter(a => a.subject === s && a.status === 'written' && a.mark !== null);
+    return w.length > 0 ? Math.round(w.reduce((sum, a) => sum + a.mark, 0) / w.length) : 0;
+  });
+  chartRadar.data.datasets[0].data = covData;
+  chartRadar.data.datasets[1].data = markData;
+  chartRadar.update();
+}
+
+/* ============================================================
+   POMODORO TIMER
+   ============================================================ */
+let tTotal = 1500, tLeft = 1500, tInt = null;
+function setT(m) { tTotal = m * 60; tLeft = tTotal; showTimer(); }
+function showTimer() { $('#tDisp').textContent = String(Math.floor(tLeft / 60)).padStart(2, '0') + ':' + String(tLeft % 60).padStart(2, '0'); }
+function toggleTimer() {
+  if (tInt) { clearInterval(tInt); tInt = null; $('#tStart').innerHTML = '<i class="bi bi-play-fill"></i> Start'; return; }
+  $('#tStart').innerHTML = '<i class="bi bi-pause-fill"></i> Pause';
+  tInt = setInterval(() => {
+    tLeft--;
+    if (tLeft <= 0) { clearInterval(tInt); tInt = null; tLeft = tTotal; $('#tStart').innerHTML = '<i class="bi bi-play-fill"></i> Start'; showToast('Block complete! Stand up, stretch, sip water.', 'ok'); }
+    showTimer();
+  }, 1000);
+}
+function resetTimer() { clearInterval(tInt); tInt = null; tLeft = tTotal; showTimer(); $('#tStart').innerHTML = '<i class="bi bi-play-fill"></i> Start'; }
+
+/* ============================================================
+   MENTOR MODE
+   ============================================================ */
+let mentorOpen = false;
+document.addEventListener('keydown', e => { if (e.ctrlKey && e.shiftKey && e.key === 'M') { e.preventDefault(); toggleMentor(); } });
+
+function toggleMentor() {
+  mentorOpen = !mentorOpen;
+  $('#mentorOverlay').style.display = mentorOpen ? 'block' : 'none';
+  if (mentorOpen) renderMentor();
+}
+
+async function renderMentor() {
+  const done = LS.get('topics', {});
+  const assess = generateAssessmentSchedule();
+  const sess = LS.get('study_sessions', []);
+  const streak = LS.get('streak', { count: 0, lastDate: null });
+  const attend = LS.get('attendance', []);
+  const plans = LS.get('recovery_plans', {});
+
+  // Calculate metrics
+  let totT = 0, allT = 0;
+  Object.keys(SUBJ).forEach(s => { allT += TOPICS[s].length; totT += TOPICS[s].filter((_, i) => done[s + '|' + i]).length; });
+  const totalH = sess.reduce((s, e) => s + (e.hours || 0), 0);
+  const written = assess.filter(a => a.status === 'written');
+  const avgMark = written.length > 0 ? Math.round(written.reduce((s, a) => s + (a.mark || 0), 0) / written.length) : 0;
+
+  // Missed days this month
+  const thisMonth = new Date(today0.getFullYear(), today0.getMonth(), 1);
+  let missedDays = 0;
+  for (let d = new Date(thisMonth); d < today0; d.setDate(d.getDate() + 1)) {
+    const k = iso(d);
+    const daySess = sess.filter(e => e.date === k);
+    const dayAtt = attend.filter(a => a.date === k && a.check_in);
+    if (daySess.length === 0 && dayAtt.length === 0 && d.getDay() !== 0) missedDays++;
+  }
+
+  // Weekly hours (last 4 weeks)
+  const weeklyHrs = [];
+  for (let w = 3; w >= 0; w--) {
+    const mon = new Date(mondayOf(today0).getTime() - w * 7 * DAY);
+    const monKey = iso(mon);
+    const wkH = sess.filter(e => ds(e.date) >= mon && ds(e.date) < new Date(mon.getTime() + 7 * DAY)).reduce((s, e) => s + (e.hours || 0), 0);
+    weeklyHrs.push({ week: 'W' + (iso(mondayOf(today0)).localeCompare(monKey) <= 0 ? 0 : w), hours: wkH });
+  }
+
+  $('#mentorContent').innerHTML = `
+    <div class="col-lg-3"><div class="mentor-card text-center">
+      <div style="font-size:2rem;font-weight:800;font-family:Poppins">${streak.count || 0}</div><div style="opacity:.7;font-size:.8rem">Day Streak</div>
+    </div></div>
+    <div class="col-lg-3"><div class="mentor-card text-center">
+      <div style="font-size:2rem;font-weight:800;font-family:Poppins;color:#2dd4bf">${totalH.toFixed(0)}h</div><div style="opacity:.7;font-size:.8rem">Total Hours</div>
+    </div></div>
+    <div class="col-lg-3"><div class="mentor-card text-center">
+      <div style="font-size:2rem;font-weight:800;font-family:Poppins;color:#fbbf24">${Math.round(totT / allT * 100)}%</div><div style="opacity:.7;font-size:.8rem">Syllabus Coverage</div>
+    </div></div>
+    <div class="col-lg-3"><div class="mentor-card text-center">
+      <div style="font-size:2rem;font-weight:800;font-family:Poppins;color:${missedDays > 3 ? '#f87171' : missedDays > 1 ? '#fbbf24' : '#4ade80'}">${missedDays}</div><div style="opacity:.7;font-size:.8rem">Days Missed This Month</div>
+    </div></div>
+    <div class="col-lg-6"><div class="mentor-card">
+      <h6 class="fw-p mb-2" style="font-size:.9rem">Weekly Hours (Last 4 Weeks)</h6>
+      ${weeklyHrs.map(w => `<div class="d-flex justify-content-between align-items-center mb-1">
+        <span style="font-size:.8rem">${w.week}</span>
+        <div class="flex-grow-1 mx-2"><div class="progress progress-thin"><div class="progress-bar" style="width:${Math.min(100, w.hours / 25 * 100)}%;background:${w.hours >= 25 ? '#4ade80' : w.hours >= 15 ? '#fbbf24' : '#f87171'}"></div></div></div>
+        <span style="font-size:.8rem;font-weight:700">${w.hours.toFixed(1)}h</span>
+      </div>`).join('')}
+    </div></div>
+    <div class="col-lg-6"><div class="mentor-card">
+      <h6 class="fw-p mb-2" style="font-size:.9rem">Subject Breakdown</h6>
+      ${Object.keys(SUBJ).map(s => {
+        const dd = TOPICS[s].filter((_, i) => done[s + '|' + i]).length;
+        const pct = Math.round(dd / TOPICS[s].length * 100);
+        const h = sess.filter(e => e.subject === s).reduce((sum, e) => sum + (e.hours || 0), 0);
+        const sw = assess.filter(a => a.subject === s && a.status === 'written');
+        const sm = sw.length > 0 ? Math.round(sw.reduce((sum, a) => sum + (a.mark || 0), 0) / sw.length) : 0;
+        return `<div class="mb-2 pb-2" style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <div class="d-flex justify-content-between align-items-center"><span style="font-size:.82rem"><span class="subj-dot me-1" style="background:${SUBJ[s].c}"></span>${s}</span><span style="font-size:.75rem;opacity:.7">${h.toFixed(0)}h • ${sm > 0 ? sm + '%' : '—'}</span></div>
+          <div class="progress progress-thin mt-1"><div class="progress-bar" style="width:${pct}%;background:${SUBJ[s].c}"></div></div>
+          <div style="font-size:.7rem;opacity:.6">${dd}/${TOPICS[s].length} topics • ${sw.length} assessments</div>
+        </div>`;
+      }).join('')}
+    </div></div>
+    <div class="col-lg-6"><div class="mentor-card">
+      <h6 class="fw-p mb-2" style="font-size:.9rem">Assessment Results</h6>
+      <div style="max-height:200px;overflow-y:auto">
+      ${written.length > 0 ? written.map(a => `<div class="d-flex justify-content-between mb-1" style="font-size:.78rem">
+        <span>${a.subject} (${a.type})</span>
+        <span style="font-weight:700;color:${a.mark >= 50 ? '#4ade80' : '#f87171'}">${a.mark}%</span>
+      </div>`).join('') : '<p style="font-size:.8rem;opacity:.6">No assessments written yet</p>'}
+      </div>
+    </div></div>
+    <div class="col-lg-6"><div class="mentor-card">
+      <h6 class="fw-p mb-2" style="font-size:.9rem">Recovery Status</h6>
+      ${Object.entries(plans).length > 0 ? Object.entries(plans).slice(-3).map(([wk, p]) => {
+        const done = p.slots.filter(s => s.done).length;
+        return `<div class="d-flex justify-content-between mb-1" style="font-size:.78rem">
+          <span>Week of ${wk}</span>
+          <span style="color:${done === p.slots.length ? '#4ade80' : '#fbbf24'}">${done}/${p.slots.length} recovered (${p.missed.toFixed(1)}h missed)</span>
+        </div>`;
+      }).join('') : '<p style="font-size:.8rem;opacity:.6">No recovery plans yet</p>'}
+    </div></div>
+  `;
+}
+
+/* ============================================================
+   NOTIFICATIONS
+   ============================================================ */
+function requestNotificationPermission() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+}
+
+function scheduleStudyReminder() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const now = new Date();
+  const target = new Date(now);
+  target.setHours(17, 30, 0, 0);
+  if (target <= now) target.setDate(target.getDate() + 1);
+  const delay = target - now;
+  setTimeout(() => {
+    new Notification('Comeback HQ', { body: 'Livhuwani, your 18:00 study block is waiting. Check in at the HQ!', icon: '📚' });
+    scheduleStudyReminder(); // Schedule next day
+  }, delay);
+}
+
+/* ============================================================
+   PWA SETUP
+   ============================================================ */
+function setupPWA() {
+  // Manifest as blob URL
+  const manifest = {
+    name: "Livhuwani's Comeback HQ",
+    short_name: "Comeback HQ",
+    description: "Matric May/June 2027 Study Portal",
+    start_url: '.',
+    display: 'standalone',
+    background_color: '#f1f5f9',
+    theme_color: '#1e3a5f',
+    icons: [{
+      src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="#1e3a5f"/><text x="50" y="65" text-anchor="middle" font-size="50" fill="white">HQ</text></svg>'),
+      sizes: '192x192', type: 'image/svg+xml', purpose: 'any maskable'
+    }]
+  };
+  try {
+    const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+    $('#manifestLink').href = URL.createObjectURL(blob);
+  } catch (e) { console.warn('Manifest setup failed', e); }
+
+  // Service worker (best effort — may fail on some origins)
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      const CACHE = 'hq-v1';
+      const URLS = ['/'];
+      self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(URLS))); self.skipWaiting(); });
+      self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
+    `;
+    try {
+      const swBlob = new Blob([swCode], { type: 'application/javascript' });
+      navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+    } catch (e) { /* SW from blob URL doesn't work in most browsers — that's fine */ }
+  }
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+function showToast(msg, type = 'info') {
+  const colors = { ok: 'bg-success', warn: 'bg-warning text-dark', err: 'bg-danger', info: 'bg-dark' };
+  const icons = { ok: 'bi-check-circle', warn: 'bi-exclamation-circle', err: 'bi-x-circle', info: 'bi-info-circle' };
+  const id = 'toast_' + Date.now();
+  const el = document.createElement('div');
+  el.id = id;
+  el.className = `toast align-items-center text-white ${colors[type]} border-0`;
+  el.setAttribute('role', 'alert');
+  el.innerHTML = `<div class="d-flex"><div class="toast-body"><i class="bi ${icons[type]} me-2"></i>${msg}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+  $('#toastBox').appendChild(el);
+  const t = new bootstrap.Toast(el, { delay: 3500 });
+  t.show();
+  el.addEventListener('hidden.bs.toast', () => el.remove());
+}
+
+/* ============================================================
+   DATA LOADING & RENDERING
+   ============================================================ */
+async function loadAllData() {
+  // Sync from Supabase to localStorage if online
+  if (USE_SB && sb && userId) {
+    try {
+      // Sync sessions
+      const { data: sessData } = await sb.from('study_sessions').select('*').eq('user_id', userId).order('created_at');
+      if (sessData && sessData.length > 0) {
+        const local = LS.get('study_sessions', []);
+        // Merge: keep both local and remote
+        const merged = [...local];
+        sessData.forEach(sd => {
+          if (!merged.find(m => m.id === sd.id)) {
+            merged.push({ id: sd.id, date: sd.date, subject: sd.subject, hours: sd.hours, created_at: sd.created_at });
+          }
+        });
+        LS.set('study_sessions', merged);
+      }
+      // Sync attendance
+      const { data: attData } = await sb.from('attendance').select('*').eq('user_id', userId);
+      if (attData && attData.length > 0) LS.set('attendance', attData);
+      // Sync streak
+      const { data: streakData } = await sb.from('streaks').select('*').eq('user_id', userId).single();
+      if (streakData) LS.set('streak', { count: streakData.current_streak, lastDate: streakData.last_activity_date, missedYesterday: streakData.missed_yesterday });
+    } catch (e) { console.warn('Sync failed', e); }
+  }
+}
+
+function renderAll() {
+  tickCountdown();
+  renderStreak(LS.get('streak', { count: 0, lastDate: null }));
+  renderCoverage();
+  buildTopics();
+  renderDailySchedule();
+  renderLogButtons();
+  renderSessions();
+  renderAttendance();
+  renderAssessments();
+  renderMarkChart();
+  renderDashboardMarks();
+  renderHoursChart();
+  renderRadar();
+  renderReadiness();
+  renderRecovery();
+  initCalendar();
+  buildAdmin();
+  renderMarkChart();
+  renderRadar();
+
+  // Load today's notes
+  $('#dailyNotes').value = LS.get('note_' + iso(today0), '');
+
+  // Last login
+  const lastLogin = LS.get('last_login');
+  if (lastLogin) {
+    const diff = (new Date() - new Date(lastLogin)) / 3600000;
+    if (diff < 1) $('#accLogin').textContent = 'Just now';
+    else if (diff < 24) $('#accLogin').textContent = Math.round(diff) + 'h ago';
+    else $('#accLogin').textContent = Math.round(diff / 24) + 'd ago';
+  }
+
+  // Footer mode
+  $('#footerMode').textContent = USE_SB ? 'Supabase' : 'Local';
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+async function init() {
+  setupPWA();
+
+  if (USE_SB && sb) {
+    // Check for existing session
+    const { data: { session } } = await sb.auth.getSession();
+    if (session && session.user) {
+      userId = session.user.id;
+      // Ensure profile
+      const { data: prof } = await sb.from('profiles').select('*').eq('id', userId).single();
+      if (!prof) await sb.from('profiles').insert({ id: userId, display_name: session.user.user_metadata?.full_name || 'Learner', role: 'learner' });
+      // Check if mentor
+      if (prof && prof.role === 'mentor') {
+        // Mentor sees the learner's data — for now, show locked screen
+      }
+      $('#authScreen').style.display = 'none';
+      showLockedScreen();
+    } else {
+      $('#authScreen').style.display = 'flex';
+    }
+
+    // Listen for auth changes
+    sb.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        userId = session.user.id;
+        const { data: prof } = await sb.from('profiles').select('*').eq('id', userId).single();
+        if (!prof) await sb.from('profiles').insert({ id: userId, display_name: session.user.user_metadata?.full_name || 'Learner', role: 'learner' });
+        $('#authScreen').style.display = 'none';
+        showLockedScreen();
+      } else if (event === 'SIGNED_OUT') {
+        signOut();
+      }
+    });
+  } else {
+    // No Supabase — show auth with offline option
+    $('#authScreen').style.display = 'flex';
+  }
+
+  // Start countdown timer
+  setInterval(tickCountdown, 1000);
+
+  // Schedule notification
+  scheduleStudyReminder();
+
+  // Init charts (they'll be updated when data loads)
+  initCharts();
+}
+
+init();
+</script>
+</body>
+</html>
