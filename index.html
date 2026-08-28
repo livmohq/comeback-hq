@@ -474,7 +474,7 @@ h1,h2,h3,h4,h5,h6,.fw-p{font-family:'Poppins',sans-serif}
    CONFIGURATION - Corrected Supabase URL domain
    ================================================================ */
 const SB_URL  = 'https://ozmgljjrpilvnpbvkpvu.supabase.co';
-const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96bWdsaWpycGlsdm5wYnZwa3Z1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg3NjU2MzQsImV4cCI6MjA1NDM0MTYzNH0.sb_publishable_4XI0LSs4ID-BVXEKZdWn_Q_NDiNgNRo';
+const SB_KEY  = 'sb_publishable_4XI0LSs4ID-BVXEKZdWn_Q_NDiNgNRo';
 const USE_SB = !!(SB_URL && SB_KEY && SB_URL.indexOf('YOUR_') === -1);
 let sb = null;
 if (USE_SB) { try { sb = window.supabase.createClient(SB_URL, SB_KEY); } catch(e) { console.warn('Supabase init error:', e); } }
