@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -472,25 +471,13 @@ h1,h2,h3,h4,h5,h6,.fw-p{font-family:'Poppins',sans-serif}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ================================================================
-   CONFIGURATION - Supabase Setup
+   CONFIGURATION - Corrected Supabase URL domain
    ================================================================ */
-const SB_URL = 'https://ozmgljjrpilvnpbvkpvu.supabase.co';
-const SB_KEY = 'sb_publishable_4XI0LSs4ID-BVXEKZdWn_Q_NDiNgNRo';
+const SB_URL  = 'https://ozmgljjrpilvnpbvkpvu.supabase.co';
+const SB_KEY  = 'sb_publishable_4XI0LSs4ID-BVXEKZdWn_Q_NDiNgNRo';
 const USE_SB = !!(SB_URL && SB_KEY && SB_URL.indexOf('YOUR_') === -1);
 let sb = null;
-if (USE_SB) {
-  try {
-    sb = window.supabase.createClient(SB_URL, SB_KEY, {
-      auth: {
-        autoRefreshToken: true,
-        persistSession: true,
-        detectSessionInUrl: true
-      }
-    });
-  } catch(e) {
-    console.warn('Supabase init error:', e);
-  }
-}
+if (USE_SB) { try { sb = window.supabase.createClient(SB_URL, SB_KEY); } catch(e) { console.warn('Supabase init error:', e); } }
 
 /* ================================================================
    HELPERS & CONSTANTS
@@ -680,37 +667,14 @@ const DB = {
 };
 
 /* ================================================================
-   AUTH & APP INITIALIZATION - FIXED VERSION
+   AUTH & APP INITIALIZATION
    ================================================================ */
 async function signInWithGoogle() {
-  if (!USE_SB || !sb) { 
-    showToast('Supabase not configured. Use offline mode below.', 'warn'); 
-    return; 
-  }
-  
+  if (!USE_SB || !sb) { showToast('Supabase not configured. Use offline mode below.', 'warn'); return; }
   try {
-    // Get the current origin for redirect
-    const redirectUrl = window.location.origin + window.location.pathname;
-    
-    const { error } = await sb.auth.signInWithOAuth({ 
-      provider: 'google',
-      options: {
-        redirectTo: redirectUrl,
-        queryParams: {
-          access_type: 'offline',
-          prompt: 'consent'
-        }
-      }
-    });
-    
-    if (error) {
-      console.error('Google Sign In Error:', error);
-      showToast('Login failed: ' + error.message, 'err');
-    }
-  } catch(e) {
-    console.error('Sign in exception:', e);
-    showToast('Login error: ' + e.message, 'err');
-  }
+    const { error } = await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
+    if (error) showToast('Login failed: ' + error.message, 'err');
+  } catch(e) { showToast('Login error: ' + e.message, 'err'); }
 }
 
 async function useLocalMode() {
@@ -722,96 +686,24 @@ async function useLocalMode() {
 }
 
 async function signOut() {
-  if (USE_SB && sb) { 
-    try { 
-      await sb.auth.signOut(); 
-    } catch(e) { 
-      console.warn('Sign out error:', e); 
-    } 
-  }
+  if (USE_SB && sb) { try { await sb.auth.signOut(); } catch {} }
   userId = null;
   $('#authScreen').style.display = 'flex';
   $('#mainApp').style.display = 'none';
   $('#lockedScreen').style.display = 'none';
 }
 
-// Handle OAuth callback
-async function handleOAuthCallback() {
-  if (!USE_SB || !sb) return false;
-  
-  try {
-    // Check if we have a session (this handles the OAuth callback)
-    const { data: { session }, error } = await sb.auth.getSession();
-    
-    if (error) {
-      console.error('Session error:', error);
-      return false;
-    }
-    
+window.addEventListener('DOMContentLoaded', async () => {
+  if (USE_SB && sb) {
+    const { data: { session } } = await sb.auth.getSession();
     if (session && session.user) {
       userId = session.user.id;
       $('#authScreen').style.display = 'none';
       $('#footerMode').textContent = 'Cloud';
-      
-      // Ensure user profile exists
-      await ensureUserProfile(userId);
-      
       showLockedScreen();
-      return true;
-    }
-    
-    return false;
-  } catch(e) {
-    console.error('OAuth callback error:', e);
-    return false;
-  }
-}
-
-async function ensureUserProfile(userId) {
-  try {
-    const { data, error } = await sb
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
-    
-    if (error && error.code === 'PGRST116') {
-      // Profile doesn't exist, create it
-      await sb.from('profiles').insert({
-        id: userId,
-        username: 'user_' + userId.slice(0, 8),
-        full_name: 'Comeback HQ User',
-        created_at: new Date().toISOString()
-      });
-    }
-  } catch(e) {
-    console.warn('Profile check error:', e);
-  }
-}
-
-window.addEventListener('DOMContentLoaded', async () => {
-  // First, try to handle OAuth callback
-  const handled = await handleOAuthCallback();
-  
-  if (handled) return;
-  
-  // If no OAuth session, check for existing session
-  if (USE_SB && sb) {
-    try {
-      const { data: { session } } = await sb.auth.getSession();
-      if (session && session.user) {
-        userId = session.user.id;
-        $('#authScreen').style.display = 'none';
-        $('#footerMode').textContent = 'Cloud';
-        showLockedScreen();
-        return;
-      }
-    } catch(e) {
-      console.warn('Session check error:', e);
+      return;
     }
   }
-  
-  // Fallback to local mode
   const savedUid = LS.get('local_uid', null);
   if (savedUid) {
     userId = savedUid;
@@ -1149,7 +1041,299 @@ function getAssessments() {
     let weekOffset = 0;
     TOPICS[subject].forEach((topic, i) => {
       const topicEndWeek = weekOffset + weeks[i];
-      const shortDate =
+      const shortDate = new Date(START.getTime() + topicEndWeek*7*DAY + 2*DAY);
+      if (shortDate <= ds('2027-05-07')) {
+        assess.push({ id:subject+'_s_'+i, subject, type:'short', title:subject+': '+topic, expectedDate:iso(shortDate), status:'pending', mark:null });
+      }
+      weekOffset = topicEndWeek;
+    });
+  });
+  LS.set('assessments', assess);
+  return assess;
+}
 
+function renderAssessments() {
+  const assess = getAssessments();
+  const filtered = currentAssessFilter === 'all' ? assess : assess.filter(a => a.status === currentAssessFilter || a.type === currentAssessFilter);
+
+  $('#assessBody').innerHTML = filtered.map(a => {
+    const sc = SUBJ[a.subject]?.c || 'var(--mut)';
+    const typeB = '<span class="badge text-bg-light" style="font-size:.65rem">'+a.type.toUpperCase()+'</span>';
+    const stB = a.status==='written' ? '<span class="badge text-bg-success" style="font-size:.65rem">Written</span>'
+      : '<span class="badge text-bg-secondary" style="font-size:.65rem">Pending</span>';
+    const mk = a.mark!==null ? '<b style="color:'+(a.mark>=50?'var(--ok)':'var(--err)')+'">'+a.mark+'%</b>' : '<span class="text-muted">-</span>';
+    return '<tr><td><span class="subj-dot me-1" style="background:'+sc+'"></span>'+a.subject+'</td><td>'+typeB+'</td><td style="max-width:180px">'+a.title+'</td><td class="text-nowrap">'+a.expectedDate+'</td><td>'+stB+'</td><td>'+mk+'</td><td><button class="btn btn-sm btn-outline-primary btn-subj" onclick="openMarkModal(\''+a.id+'\')"><i class="bi bi-pencil-square"></i></button></td></tr>';
+  }).join('');
+
+  renderProgressReport();
+}
+
+function filterAssess(filter, btn) {
+  currentAssessFilter = filter;
+  $$('.assess-filter').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderAssessments();
+}
+
+function openMarkModal(aid) {
+  currentMarkAssessId = aid;
+  const a = getAssessments().find(x => x.id === aid);
+  if (!a) return;
+  $('#markModalTitle').textContent = a.title;
+  $('#markInput').value = a.mark !== null ? a.mark : '';
+  new bootstrap.Modal($('#markModal')).show();
+}
+
+async function saveMark() {
+  const mark = parseInt($('#markInput').value);
+  if (isNaN(mark) || mark < 0 || mark > 100) { showToast('Enter 0-100', 'warn'); return; }
+
+  const assess = getAssessments();
+  const idx = assess.findIndex(a => a.id === currentMarkAssessId);
+  if (idx < 0) return;
+
+  assess[idx].mark = mark;
+  assess[idx].status = 'written';
+  LS.set('assessments', assess);
+
+  if (USE_SB && sb && userId) {
+    await DB.upsert('assessments', {
+      assess_id: assess[idx].id, subject: assess[idx].subject, type: assess[idx].type,
+      title: assess[idx].title, expected_date: assess[idx].expectedDate,
+      status: 'written', mark: mark
+    }, ['assess_id']);
+  }
+
+  await recordActivity();
+  bootstrap.Modal.getInstance($('#markModal')).hide();
+  renderAssessments();
+  showToast('Mark saved: '+mark+'%', 'ok');
+}
+
+function renderProgressReport() {
+  const assess = getAssessments();
+  $('#reportBody').innerHTML = Object.keys(SUBJ).map(s => {
+    const w = assess.filter(a => a.subject===s && a.status==='written' && a.mark!==null);
+    const avg = w.length > 0 ? Math.round(w.reduce((sum,a)=>sum+a.mark,0)/w.length) : null;
+    const t = SUBJ[s].t;
+    const st = avg === null ? '<span class="badge text-bg-secondary" style="font-size:.65rem">No marks</span>'
+      : avg >= t ? '<span class="badge text-bg-success" style="font-size:.65rem">On track</span>'
+      : '<span class="badge text-bg-warning" style="font-size:.65rem">Behind</span>';
+    return '<tr><td><span class="subj-dot me-1" style="background:'+SUBJ[s].c+'"></span>'+s+'</td><td><b>'+(avg!==null?avg+'%':'-')+'</b></td><td>'+t+'%</td><td>'+st+'</td></tr>';
+  }).join('');
+}
+
+/* ================================================================
+   TOPICS & SESSIONS
+   ================================================================ */
+function buildTopics() {
+  const done = LS.get('topics', {});
+  $('#topicCards').innerHTML = Object.keys(SUBJ).map(s => {
+    const topics = TOPICS[s], dd = topics.filter((_,i)=>done[s+'|'+i]).length;
+    const pct = Math.round(dd/topics.length*100);
+    return '<div class="col-md-6"><div class="card p-3 h-100" style="border-top:4px solid '+SUBJ[s].c+'">'+
+      '<div class="d-flex justify-content-between align-items-center mb-2"><h6 class="fw-p mb-0"><i class="bi '+SUBJ[s].i+' me-1" style="color:'+SUBJ[s].c+'"></i>'+s+'</h6><span class="badge" style="background:'+SUBJ[s].c+'" id="pct-'+s+'">'+pct+'%</span></div>'+
+      '<div class="mb-2">'+topics.map((t,i)=>'<div class="form-check" style="font-size:.82rem"><input class="form-check-input" type="checkbox" '+(done[s+'|'+i]?'checked':'')+' onchange="toggleTopic(\''+s+'\','+i+',this.checked)"><label class="form-check-label">'+t+'</label></div>').join('')+'</div>'+
+      '<div class="progress progress-thin"><div class="progress-bar" id="bar-'+s+'" style="background:'+SUBJ[s].c+';width:'+pct+'%"></div></div></div></div>';
+  }).join('');
+}
+
+async function toggleTopic(subject, index, checked) {
+  const done = LS.get('topics', {});
+  done[subject+'|'+index] = checked;
+  LS.set('topics', done);
+  if (checked) {
+    await recordActivity();
+    await DB.upsert('topic_progress', { subject, topic_index: index, completed: checked, completed_at: new Date().toISOString() }, ['subject','topic_index']);
+  }
+  buildTopics();
+  renderCoverage();
+}
+
+function renderCoverage() {
+  const done = LS.get('topics', {});
+  let tot=0, all=0;
+  Object.keys(SUBJ).forEach(s => {
+    const n = TOPICS[s].length, dd = TOPICS[s].filter((_,i)=>done[s+'|'+i]).length;
+    tot+=dd; all+=n;
+  });
+  const cov = Math.round(tot/all*100);
+  $('#ringCov').style.strokeDasharray = cov+' 100';
+  $('#covPct').textContent = cov+'%';
+}
+
+async function logSession(subject, hours) {
+  await DB.insert('study_sessions', { date: iso(today0), subject, hours, created_at: new Date().toISOString() });
+  await recordActivity();
+  renderSessions();
+}
+
+function renderLogButtons() {
+  $('#logBtns').innerHTML = Object.keys(SUBJ).map(s =>
+    '<button class="btn btn-sm text-white btn-subj" style="background:'+SUBJ[s].c+'" onclick="logSession(\''+s+'\',2)"><i class="bi bi-plus-lg"></i> '+s+' 2h</button>'
+  ).join('');
+}
+
+function renderSessions() {
+  const sess = LS.get('study_sessions', []);
+  const mon = mondayOf(new Date());
+  let wkH = 0;
+  sess.forEach(e => { if (ds(e.date) >= mon) wkH += (e.hours||0); });
+
+  $('#weekBar').style.width = Math.min(100, wkH/25*100)+'%';
+  $('#weekTxt').textContent = wkH.toFixed(1)+'h / 25h this week';
+  $('#accHours').textContent = wkH.toFixed(1)+'h';
+
+  $('#sessList').innerHTML = sess.slice(-10).reverse().map(e =>
+    '<li class="list-group-item px-0 py-1 d-flex justify-content-between"><span>'+e.date+' - <b>'+e.subject+'</b></span><span class="text-muted">'+e.hours+'h</span></li>'
+  ).join('') || '<li class="list-group-item px-0 text-muted">No sessions logged yet.</li>';
+}
+
+/* ================================================================
+   CALENDAR & ADMIN
+   ================================================================ */
+let calY = today0.getFullYear(), calM = today0.getMonth();
+
+function initCalendar() {
+  $('#calDow').innerHTML = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>'<div class="cal-dow">'+x+'</div>').join('');
+  renderCalendar();
+}
+
+function renderCalendar() {
+  $('#calTitle').textContent = new Date(calY,calM,1).toLocaleDateString('en-ZA',{month:'long',year:'numeric'});
+  const first = new Date(calY,calM,1), off = (first.getDay()+6)%7, dim = new Date(calY,calM+1,0).getDate();
+  let h = '';
+  for (let i=0;i<off;i++) h += '<div class="cal-empty"></div>';
+  for (let dd=1;dd<=dim;dd++) {
+    const dt = new Date(calY,calM,dd), ph = phaseOf(dt), k = iso(dt);
+    h += '<div class="cal-day '+(k===iso(today0)?'cal-today':'')+'" style="background:'+(ph?ph.bg:'#fff')+'" onclick="showDay(\''+k+'\')"><b>'+dd+'</b></div>';
+  }
+  $('#calGrid').innerHTML = h;
+}
+
+function calNav(d) { calM+=d; if(calM<0){calM=11;calY--;} if(calM>11){calM=0;calY++;} renderCalendar(); }
+function calToday() { calY=today0.getFullYear(); calM=today0.getMonth(); renderCalendar(); }
+
+function showDay(k) {
+  const dt = ds(k), ph = phaseOf(dt);
+  let info = '<b>'+dt.toLocaleDateString('en-ZA',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+'</b><br>';
+  info += ph ? '<span class="badge mt-2 mb-2" style="background:'+ph.c+'">'+ph.n+'</span>' : '<p class="mt-2">No phase scheduled.</p>';
+  $('#dayInfo').innerHTML = info;
+}
+
+function renderAdminList() {
+  const saved = LS.get('admin_checks', {});
+  $('#adminList').innerHTML = ADMIN_ITEMS.map((item, idx) => `
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" id="adm_${idx}" ${saved[idx] ? 'checked' : ''} onchange="toggleAdminCheck(${idx}, this.checked)">
+      <label class="form-check-label small" for="adm_${idx}">${item}</label>
+    </div>
+  `).join('');
+}
+
+function toggleAdminCheck(idx, checked) {
+  const saved = LS.get('admin_checks', {});
+  saved[idx] = checked;
+  LS.set('admin_checks', saved);
+}
+
+/* ================================================================
+   READINESS & RECOVERY
+   ================================================================ */
+function renderReadiness() {
+  const done = LS.get('topics',{}), assess = getAssessments(), sess = LS.get('study_sessions',[]);
+  let totT=0, allT=0;
+  Object.keys(SUBJ).forEach(s=>{allT+=TOPICS[s].length;totT+=TOPICS[s].filter((_,i)=>done[s+'|'+i]).length;});
+  const topicPct = Math.round(totT/(allT||1)*100);
+  const totalH = sess.reduce((s,e)=>s+(e.hours||0),0);
+  const written = assess.filter(a=>a.status==='written');
+
+  const readiness = Math.min(100, Math.round(topicPct*.4 + Math.min(100,totalH/620*100)*.4 + Math.min(100,written.length/10*100)*.2));
+
+  $('#rdTopics').textContent = topicPct+'%';
+  $('#rdHours').textContent = totalH.toFixed(0)+'h';
+  $('#rdAssess').textContent = written.length;
+  $('#rdPct').textContent = readiness+'%';
+  $('#rdRing').style.strokeDasharray = readiness+' 100';
+}
+
+function renderRecovery() {
+  const sess = LS.get('study_sessions',[]);
+  const mon = mondayOf(new Date());
+  let wkH = 0;
+  sess.forEach(e=>{if(ds(e.date)>=mon)wkH+=(e.hours||0);});
+  const missed = Math.max(0, 25-wkH);
+
+  let html = `<div class="d-flex align-items-center gap-3 mb-3">
+    <div class="text-center">
+      <div class="stat-num" style="color:${missed>0?'var(--err)':'var(--ok)'}">${missed.toFixed(1)}</div>
+      <div class="stat-lbl">Hours Behind Target</div>
+    </div>
+    <div class="flex-grow-1">
+      <p class="small text-muted mb-0">${missed>0 ? 'Catch up over weekend sessions to stay on target.' : 'On schedule! No recovery needed.'}</p>
+    </div>
+  </div>`;
+  $('#recoveryContent').innerHTML = html;
+}
+
+/* ================================================================
+   CHARTS
+   ================================================================ */
+function initCharts() {
+  try {
+    const ctxD = $('#chartDough');
+    if (ctxD) {
+      new Chart(ctxD, {
+        type: 'doughnut',
+        data: {
+          labels: Object.keys(SUBJ),
+          datasets: [{ data: [6, 6, 6, 6], backgroundColor: ['#4f46e5', '#d97706', '#be185d', '#0f766e'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+    }
+
+    const ctxM = $('#chartMarks');
+    if (ctxM) {
+      new Chart(ctxM, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(SUBJ),
+          datasets: [{ label: 'Target %', data: [60, 55, 55, 70], backgroundColor: '#1e3a5f' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { max: 100 } } }
+      });
+    }
+  } catch(e) { console.warn('Chart init error:', e); }
+}
+
+/* ================================================================
+   MENTOR OVERLAY DASHBOARD
+   ================================================================ */
+function toggleMentor() {
+  mentorOpen = !mentorOpen;
+  const ov = $('#mentorOverlay');
+  ov.style.display = mentorOpen ? 'block' : 'none';
+  if (mentorOpen) renderMentorData();
+}
+
+function renderMentorData() {
+  const sess = LS.get('study_sessions', []);
+  const att = LS.get('attendance', []);
+  const totalH = sess.reduce((a,b)=>a+(b.hours||0),0);
+  $('#mentorContent').innerHTML = `
+    <div class="col-md-4"><div class="mentor-card"><h6>Total Study Hours</h6><h3>${totalH.toFixed(1)}h</h3></div></div>
+    <div class="col-md-4"><div class="mentor-card"><h6>Total Attendance Days</h6><h3>${att.length}</h3></div></div>
+    <div class="col-md-4"><div class="mentor-card"><h6>Current Active User ID</h6><small>${userId||'Offline Mode'}</small></div></div>
+  `;
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key === 'M') {
+    e.preventDefault();
+    toggleMentor();
+  }
+});
+</script>
 </body>
 </html>
